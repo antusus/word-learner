@@ -55,3 +55,8 @@ yarn deploy
 - Vitest + React Testing Library (testing)
 - Biome (linting & formatting)
 - GitHub Pages (deployment)
+
+## Workflow
+
+- Always create a feature branch and open a pull request for changes
+- Do not commit directly to main
