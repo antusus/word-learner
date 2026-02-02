@@ -55,4 +55,22 @@ describe('UnitSelector', () => {
     expect(screen.getByRole('list')).toBeInTheDocument()
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
   })
+
+  it('shows checkmark for completed units', () => {
+    render(<UnitSelector units={mockUnits} completedUnits={['Unit1']} onSelect={() => {}} />)
+    expect(screen.getByLabelText('completed')).toBeInTheDocument()
+  })
+
+  it('applies completed class to completed units', () => {
+    const { container } = render(
+      <UnitSelector units={mockUnits} completedUnits={['Unit1']} onSelect={() => {}} />
+    )
+    const completedButtons = container.querySelectorAll('.unit-button.completed')
+    expect(completedButtons).toHaveLength(1)
+  })
+
+  it('does not show checkmark for non-completed units', () => {
+    render(<UnitSelector units={mockUnits} completedUnits={[]} onSelect={() => {}} />)
+    expect(screen.queryByLabelText('completed')).not.toBeInTheDocument()
+  })
 })

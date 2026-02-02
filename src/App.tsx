@@ -3,6 +3,7 @@ import { UnitSelector } from './components/UnitSelector'
 import { ModeSelector } from './components/ModeSelector'
 import { loadUnits } from './data/loader'
 import { getGameModes, type GameMode } from './modes'
+import { useProgress } from './hooks/useProgress'
 import type { Unit } from './types'
 import './App.css'
 
@@ -15,6 +16,7 @@ function App() {
   const [screen, setScreen] = useState<Screen>('units')
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null)
   const [selectedMode, setSelectedMode] = useState<GameMode | null>(null)
+  const { completedUnits, markCompleted } = useProgress()
 
   const handleSelectUnit = (unit: Unit) => {
     setSelectedUnit(unit)
@@ -37,13 +39,10 @@ function App() {
     setScreen('units')
   }
 
-  const handleBackToModes = () => {
-    setSelectedMode(null)
-    setScreen('modes')
-  }
-
   const handleComplete = () => {
-    // Progress tracking will be added in Phase 5
+    if (selectedUnit) {
+      markCompleted(selectedUnit.id)
+    }
   }
 
   if (screen === 'quiz' && selectedUnit && selectedMode) {
@@ -65,7 +64,7 @@ function App() {
 
   return (
     <div className="app">
-      <UnitSelector units={units} onSelect={handleSelectUnit} />
+      <UnitSelector units={units} completedUnits={completedUnits} onSelect={handleSelectUnit} />
     </div>
   )
 }
