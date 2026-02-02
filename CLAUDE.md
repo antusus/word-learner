@@ -60,3 +60,4 @@ yarn deploy
 
 - Always create a feature branch and open a pull request for changes
 - Do not commit directly to main
+- Use conventional commits (e.g., `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `test:`)
