@@ -1,0 +1,13 @@
+{
+  "title": "Unit 1 - Animals",
+  "words": [
+    { "en": "cat", "pl": "kot" },
+    { "en": "dog", "pl": "pies" },
+    { "en": "bird", "pl": "ptak" },
+    { "en": "fish", "pl": "ryba" },
+    { "en": "horse", "pl": "koń" },
+    { "en": "cow", "pl": "krowa" },
+    { "en": "pig", "pl": "świnia" },
+    { "en": "sheep", "pl": "owca" }
+  ]
+}
