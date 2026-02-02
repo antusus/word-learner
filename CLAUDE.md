@@ -24,6 +24,12 @@ yarn test:run
 # Lint code
 yarn lint
 
+# Lint and auto-fix issues
+yarn lint:fix
+
+# Format code
+yarn format
+
 # Build for production
 yarn build
 
@@ -47,5 +53,5 @@ yarn deploy
 - React 19 + TypeScript 5.9
 - Vite 7 (build tool)
 - Vitest + React Testing Library (testing)
-- ESLint (linting)
+- Biome (linting & formatting)
 - GitHub Pages (deployment)

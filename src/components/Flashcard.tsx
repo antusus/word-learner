@@ -1,25 +1,18 @@
-import type { Word } from '../types'
-import './Flashcard.css'
+import type { Word } from '../types';
+import './Flashcard.css';
 
 interface FlashcardProps {
-  word: Word
-  isFlipped: boolean
-  onFlip: () => void
+  word: Word;
+  isFlipped: boolean;
+  onFlip: () => void;
 }
 
 export function Flashcard({ word, isFlipped, onFlip }: FlashcardProps) {
   return (
-    <div
+    <button
+      type="button"
       className={`flashcard ${isFlipped ? 'flipped' : ''}`}
       onClick={onFlip}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault()
-          onFlip()
-        }
-      }}
     >
       <div className="flashcard-inner">
         <div className="flashcard-front">
@@ -30,6 +23,6 @@ export function Flashcard({ word, isFlipped, onFlip }: FlashcardProps) {
           <span className="flashcard-text">{word.en}</span>
         </div>
       </div>
-    </div>
-  )
+    </button>
+  );
 }

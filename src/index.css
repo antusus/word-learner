@@ -14,7 +14,7 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  --font-family: "Nunito", system-ui, -apple-system, sans-serif;
 }
 
 * {
@@ -41,7 +41,9 @@ body {
   min-height: 100vh;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 700;
   line-height: 1.2;
   margin: 0 0 1rem;

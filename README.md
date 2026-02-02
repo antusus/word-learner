@@ -10,6 +10,7 @@ A static web app to help kids learn English words (Polish ↔ English). Built wi
 - **Build System:** Vite 7
 - **Language:** TypeScript 5.9
 - **Testing:** Vitest + React Testing Library
+- **Linting:** Biome
 - **Styling:** CSS (vanilla, mobile-first responsive)
 - **Data Storage:** localStorage for saving progress
 - **Deployment:** GitHub Pages
@@ -40,10 +41,12 @@ yarn test       # Run tests in watch mode
 yarn test:run   # Run tests once
 ```
 
-### Linting
+### Linting & Formatting
 
 ```bash
-yarn lint       # Run ESLint
+yarn lint       # Check for lint errors and formatting issues
+yarn lint:fix   # Auto-fix lint errors and formatting
+yarn format     # Format code
 ```
 
 ### Build
