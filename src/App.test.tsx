@@ -70,4 +70,8 @@ describe('App', () => {
       screen.getByRole('heading', { level: 1, name: 'Word Learner' }),
     ).toBeInTheDocument();
   });
+
+  it('fails intentionally to test branch protection', () => {
+    expect(true).toBe(false);
+  });
 });
