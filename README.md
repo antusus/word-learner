@@ -1,73 +1,92 @@
-# React + TypeScript + Vite
+# Word Learner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A static web app to help kids learn English words (Polish ↔ English). Built with React and deployable on GitHub Pages.
 
-Currently, two official plugins are available:
+**Live Demo:** https://antusus.github.io/word-learner/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- **Framework:** React 19
+- **Build System:** Vite 7
+- **Language:** TypeScript 5.9
+- **Testing:** Vitest + React Testing Library
+- **Styling:** CSS (vanilla, mobile-first responsive)
+- **Data Storage:** localStorage for saving progress
+- **Deployment:** GitHub Pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Requirements
 
-## Expanding the ESLint configuration
+- **Node.js:** 18.0.0 or higher (tested with Node 22)
+- **Package Manager:** Yarn
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Commands
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Development
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn dev        # Start development server with hot reload
+```
+
+### Testing
+
+```bash
+yarn test       # Run tests in watch mode
+yarn test:run   # Run tests once
+```
+
+### Linting
+
+```bash
+yarn lint       # Run ESLint
+```
+
+### Build
+
+```bash
+yarn build      # TypeScript compile + Vite production build
+yarn preview    # Preview production build locally
+```
+
+### Deploy
+
+```bash
+yarn deploy     # Build and deploy to GitHub Pages
+```
+
+This runs `yarn build` first (via `predeploy`) then publishes the `dist` folder to GitHub Pages using `gh-pages`.
+
+## Project Structure
+
+```
+word-learner/
+├── src/
+│   ├── components/     # React components (UnitSelector, Flashcard, Quiz, etc.)
+│   ├── hooks/          # Custom hooks (useProgress)
+│   ├── modes/          # Game modes registry
+│   ├── data/           # Word data (Unit1/, Unit2/, etc.)
+│   ├── types/          # TypeScript type definitions
+│   └── test/           # Test setup
+├── public/             # Static assets
+├── dist/               # Production build output
+└── index.html          # Entry point
+```
+
+## Adding New Word Units
+
+Create a new folder under `src/data/` with a `words.json` file:
+
+```json
+{
+  "title": "Unit Name",
+  "words": [
+    { "en": "cat", "pl": "kot" },
+    { "en": "dog", "pl": "pies" }
+  ]
+}
 ```
