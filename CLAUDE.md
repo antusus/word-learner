@@ -43,7 +43,6 @@ yarn deploy
 ## Project Structure
 
 - `src/components/` - React components (UnitSelector, Flashcard, Quiz, etc.)
-- `src/hooks/` - Custom hooks (useProgress for localStorage)
 - `src/data/` - Word unit data files
 - `src/types/` - TypeScript type definitions
 - `src/modes/` - Game modes registry
@@ -61,3 +60,4 @@ yarn deploy
 - Always create a feature branch and open a pull request for changes
 - Do not commit directly to main
 - Use conventional commits (e.g., `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `test:`)
+- Claude will not co-author commits.
