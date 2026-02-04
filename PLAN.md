@@ -61,8 +61,6 @@ word-learner/
 │   │   └── Quiz.tsx + .test.tsx
 │   ├── modes/
 │   │   └── index.ts              # Game modes registry
-│   ├── hooks/
-│   │   └── useProgress.ts + .test.ts
 │   ├── data/
 │   │   ├── loader.ts + .test.ts
 │   │   └── Unit1/words.json
@@ -221,33 +219,7 @@ interface QuizProps {
 
 ---
 
-### Phase 5: Progress Tracking
-**Goal:** Add localStorage persistence for completed units
-
-**Deliverables:**
-- `src/hooks/useProgress.ts` - Progress hook
-- `src/hooks/useProgress.test.ts` - Hook tests
-- Update UnitSelector to show completion status
-- Update Quiz to save progress on completion
-
-**Features:**
-- Save which units are completed
-- Show checkmark/indicator on completed units
-- Progress persists across page refresh
-
-**Tests:**
-- Saves to localStorage
-- Loads from localStorage
-- Handles missing/corrupted data
-- Updates UI when progress changes
-
-**Verification:**
-- `yarn test` - All tests pass
-- Complete a unit, refresh page, see completion status preserved
-
----
-
-### Phase 6: Responsive Styling & Deployment
+### Phase 5: Responsive Styling & Deployment
 **Goal:** Polish UI for mobile/tablet and deploy to GitHub Pages
 
 **Deliverables:**
@@ -273,12 +245,12 @@ interface QuizProps {
 | 2 | Types, Data Loader & **Unit Selector** | Can see list of units |
 | 3 | Flashcard Component | Card flips correctly |
 | 4 | Quiz, **Game Modes** & Navigation | Full quiz flow + mode registry |
-| 5 | Progress Tracking | Progress saves/loads |
-| 6 | Styling & Deployment | Deployed to GitHub Pages |
+| 5 | Styling & Deployment | Deployed to GitHub Pages |
 
 ---
 
 ## Future Enhancements (Not in V1)
+- [ ] Progress tracking (localStorage persistence for completed units)
 - [ ] Fill-in-the-blanks mode
 - [ ] Matching game mode
 - [ ] PWA offline support

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { ModeSelector } from './components/ModeSelector';
 import { UnitSelector } from './components/UnitSelector';
 import { loadUnits } from './data/loader';
-import { useProgress } from './hooks/useProgress';
 import { type GameMode, getGameModes } from './modes';
 import type { Unit } from './types';
 import './App.css';
@@ -16,7 +15,6 @@ function App() {
   const [screen, setScreen] = useState<Screen>('units');
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [selectedMode, setSelectedMode] = useState<GameMode | null>(null);
-  const { completedUnits, markCompleted } = useProgress();
 
   const handleSelectUnit = (unit: Unit) => {
     setSelectedUnit(unit);
@@ -39,19 +37,13 @@ function App() {
     setScreen('units');
   };
 
-  const handleComplete = () => {
-    if (selectedUnit) {
-      markCompleted(selectedUnit.id);
-    }
-  };
-
   if (screen === 'quiz' && selectedUnit && selectedMode) {
     const GameComponent = selectedMode.component;
     return (
       <div className="app">
         <GameComponent
           unit={selectedUnit}
-          onComplete={handleComplete}
+          onComplete={() => {}}
           onExit={handleBackToUnits}
         />
       </div>
@@ -72,11 +64,7 @@ function App() {
 
   return (
     <div className="app">
-      <UnitSelector
-        units={units}
-        completedUnits={completedUnits}
-        onSelect={handleSelectUnit}
-      />
+      <UnitSelector units={units} onSelect={handleSelectUnit} />
     </div>
   );
 }
