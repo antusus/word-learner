@@ -6,9 +6,9 @@ A static web app to help kids learn English words (Polish ↔ English). Built wi
 
 ## Tech Stack
 
-- **Framework:** React 19
-- **Build System:** Vite 7
-- **Language:** TypeScript 5.9
+- **Framework:** React
+- **Build System:** Vite
+- **Language:** TypeScript
 - **Testing:** Vitest + React Testing Library
 - **Linting:** Biome
 - **Styling:** CSS (vanilla, mobile-first responsive)
@@ -17,7 +17,7 @@ A static web app to help kids learn English words (Polish ↔ English). Built wi
 
 ## Requirements
 
-- **Node.js:** 18.0.0 or higher (tested with Node 22)
+- **Node.js:** 22
 - **Package Manager:** Yarn
 
 ## Installation
