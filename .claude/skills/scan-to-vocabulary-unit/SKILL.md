@@ -88,6 +88,7 @@ After writing the file:
 1. Show the user a summary: number of groups, number of words per group, total word count.
 2. Run `yarn build` to verify the app compiles.
 3. Run `yarn test:run` to ensure tests pass.
+4. Run `yarn lint:fix` to ensure proper format of the JSON file.
 
 ## Example
 

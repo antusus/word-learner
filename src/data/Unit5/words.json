@@ -56,7 +56,10 @@
       "name": "Real English",
       "words": [
         { "en": "Here we are.", "pl": "Jesteśmy na miejscu." },
-        { "en": "Did you know that ...?", "pl": "Czy wiedziałeś/wiedziałaś, że...?" },
+        {
+          "en": "Did you know that ...?",
+          "pl": "Czy wiedziałeś/wiedziałaś, że...?"
+        },
         { "en": "Oh my gosh!", "pl": "Ojej!" },
         { "en": "I told you!", "pl": "A nie mówiłem/mówiłam?" }
       ]
@@ -64,10 +67,19 @@
     {
       "name": "Expressing opinions and asking for opinion",
       "words": [
-        { "en": "I think (guinea pigs are cute).", "pl": "Myślę, że (świnki morskie są urocze)." },
+        {
+          "en": "I think (guinea pigs are cute).",
+          "pl": "Myślę, że (świnki morskie są urocze)."
+        },
         { "en": "I agree.", "pl": "Zgadzam się." },
-        { "en": "I'm not sure it's a good idea.", "pl": "Nie jestem pewien/pewna, że to jest dobry pomysł." },
-        { "en": "What do you think about (the book about crocodiles)?", "pl": "Co myślisz na temat (książki o krokodylach)?" },
+        {
+          "en": "I'm not sure it's a good idea.",
+          "pl": "Nie jestem pewien/pewna, że to jest dobry pomysł."
+        },
+        {
+          "en": "What do you think about (the book about crocodiles)?",
+          "pl": "Co myślisz na temat (książki o krokodylach)?"
+        },
         { "en": "Are you OK with it?", "pl": "Czy to Ci pasuje?" },
         { "en": "I don't think so.", "pl": "Nie sądzę." },
         { "en": "You're right!", "pl": "Masz rację!" },
