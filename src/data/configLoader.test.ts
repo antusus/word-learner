@@ -16,15 +16,17 @@ describe('validateDifficultyConfig', () => {
   });
 
   it('throws on empty difficulties array', () => {
-    expect(() =>
-      validateDifficultyConfig({ difficulties: [] }),
-    ).toThrow('at least one difficulty');
+    expect(() => validateDifficultyConfig({ difficulties: [] })).toThrow(
+      'at least one difficulty',
+    );
   });
 
   it('throws when blankPercentage is 0', () => {
     expect(() =>
       validateDifficultyConfig({
-        difficulties: [{ id: 'zero', name: 'Z', description: '', blankPercentage: 0 }],
+        difficulties: [
+          { id: 'zero', name: 'Z', description: '', blankPercentage: 0 },
+        ],
       }),
     ).toThrow('must be > 0 and < 1');
   });
@@ -32,7 +34,9 @@ describe('validateDifficultyConfig', () => {
   it('throws when blankPercentage is 1', () => {
     expect(() =>
       validateDifficultyConfig({
-        difficulties: [{ id: 'full', name: 'F', description: '', blankPercentage: 1 }],
+        difficulties: [
+          { id: 'full', name: 'F', description: '', blankPercentage: 1 },
+        ],
       }),
     ).toThrow('must be > 0 and < 1');
   });
@@ -40,7 +44,9 @@ describe('validateDifficultyConfig', () => {
   it('throws when blankPercentage is negative', () => {
     expect(() =>
       validateDifficultyConfig({
-        difficulties: [{ id: 'neg', name: 'N', description: '', blankPercentage: -0.5 }],
+        difficulties: [
+          { id: 'neg', name: 'N', description: '', blankPercentage: -0.5 },
+        ],
       }),
     ).toThrow('must be > 0 and < 1');
   });

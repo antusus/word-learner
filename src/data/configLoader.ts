@@ -1,7 +1,9 @@
 import type { DifficultyConfig, DifficultyLevel } from '../types';
 import config from './fill-in-blanks-config.json';
 
-export function validateDifficultyConfig(data: DifficultyConfig): DifficultyLevel[] {
+export function validateDifficultyConfig(
+  data: DifficultyConfig,
+): DifficultyLevel[] {
   const { difficulties } = data;
 
   if (!Array.isArray(difficulties) || difficulties.length === 0) {

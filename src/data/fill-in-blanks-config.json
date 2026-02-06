@@ -1,7 +1,22 @@
 {
   "difficulties": [
-    { "id": "easy", "name": "Easy", "description": "20% of letters hidden", "blankPercentage": 0.2 },
-    { "id": "medium", "name": "Medium", "description": "40% of letters hidden", "blankPercentage": 0.4 },
-    { "id": "hard", "name": "Hard", "description": "75% of letters hidden", "blankPercentage": 0.75 }
+    {
+      "id": "easy",
+      "name": "Easy",
+      "description": "20% of letters hidden",
+      "blankPercentage": 0.2
+    },
+    {
+      "id": "medium",
+      "name": "Medium",
+      "description": "40% of letters hidden",
+      "blankPercentage": 0.4
+    },
+    {
+      "id": "hard",
+      "name": "Hard",
+      "description": "75% of letters hidden",
+      "blankPercentage": 0.75
+    }
   ]
 }
