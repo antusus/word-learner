@@ -1,0 +1,350 @@
+.fib {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header */
+.fib-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.fib-back {
+  background: none;
+  color: var(--color-primary);
+  font-size: 1rem;
+  padding: 0.75rem;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fib-back:hover {
+  text-decoration: underline;
+}
+
+.fib-progress {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  background: var(--color-surface);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+}
+
+.fib-title {
+  text-align: center;
+  margin: 0.5rem 0;
+  color: var(--color-text);
+}
+
+/* Difficulty Picker */
+.fib-difficulty {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.fib-difficulty h2 {
+  margin-bottom: 1.5rem;
+}
+
+.fib-difficulty-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.fib-difficulty-button {
+  width: 100%;
+  min-height: 80px;
+  padding: 1.25rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.fib-difficulty-button:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.fib-difficulty-name {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--color-text);
+}
+
+.fib-difficulty-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Word Challenge */
+.fib-challenge {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.fib-hint {
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.fib-prompt {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.fib-hint-button {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.fib-hint-button:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.fib-word {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.fib-word-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  white-space: nowrap;
+}
+
+.fib-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.fib-blank {
+  width: 2.5rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  transition: border-color 0.2s ease;
+}
+
+.fib-blank:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.fib-blank:disabled {
+  background: var(--color-background);
+  color: var(--color-text-muted);
+}
+
+/* Actions */
+.fib-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+.fib-next-button {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 160px;
+  min-height: 56px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #764ba2 100%);
+  color: white;
+}
+
+.fib-next-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.fib-next-button:active {
+  transform: translateY(0);
+}
+
+/* Results */
+.fib-results {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.fib-results-success {
+  font-size: 2rem;
+  color: var(--color-success);
+  margin-bottom: 1rem;
+}
+
+.fib-results p {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.fib-exit-button {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 160px;
+  min-height: 56px;
+  background: var(--color-success);
+  color: white;
+}
+
+.fib-exit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.fib-error-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.fib-error-item {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1rem;
+  text-align: center;
+}
+
+.fib-error-polish {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.fib-error-letters {
+  display: flex;
+  justify-content: center;
+  gap: 0.125rem;
+}
+
+.fib-letter-correct,
+.fib-letter-wrong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.fib-letter-correct {
+  color: var(--color-success);
+  background: rgba(72, 187, 120, 0.1);
+}
+
+.fib-letter-wrong {
+  color: #e53e3e;
+  background: rgba(229, 62, 62, 0.1);
+}
+
+@media (min-width: 768px) {
+  .fib {
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .fib-title {
+    margin: 1rem 0;
+  }
+
+  .fib-prompt {
+    font-size: 2.25rem;
+  }
+
+  .fib-letter {
+    width: 1.25rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+  }
+
+  .fib-blank {
+    width: 3rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+  }
+
+  .fib-next-button,
+  .fib-exit-button {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.25rem;
+    min-width: 180px;
+  }
+
+  .fib-results-success {
+    font-size: 2.5rem;
+  }
+
+  .fib-difficulty-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .fib-difficulty-button {
+    min-height: 88px;
+  }
+}

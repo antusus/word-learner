@@ -14,7 +14,7 @@ const slots: CharSlot[] = [
 ];
 
 describe('WordChallenge', () => {
-  it('renders the Polish prompt', () => {
+  it('hides the Polish translation initially', () => {
     render(
       <WordChallenge
         word={word}
@@ -23,7 +23,24 @@ describe('WordChallenge', () => {
         onChange={() => {}}
       />,
     );
+    expect(screen.queryByText('kot')).not.toBeInTheDocument();
+    expect(screen.getByText('Show translation')).toBeInTheDocument();
+  });
+
+  it('reveals the Polish translation when hint button is clicked', async () => {
+    const user = userEvent.setup();
+    render(
+      <WordChallenge
+        word={word}
+        slots={slots}
+        userInput={[]}
+        onChange={() => {}}
+      />,
+    );
+
+    await user.click(screen.getByText('Show translation'));
     expect(screen.getByText('kot')).toBeInTheDocument();
+    expect(screen.queryByText('Show translation')).not.toBeInTheDocument();
   });
 
   it('renders revealed letters as text', () => {
