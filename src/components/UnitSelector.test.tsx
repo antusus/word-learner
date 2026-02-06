@@ -11,6 +11,15 @@ const mockUnits: Unit[] = [
       { en: 'cat', pl: 'kot' },
       { en: 'dog', pl: 'pies' },
     ],
+    groups: [
+      {
+        name: 'Animals',
+        words: [
+          { en: 'cat', pl: 'kot' },
+          { en: 'dog', pl: 'pies' },
+        ],
+      },
+    ],
   },
   {
     id: 'Unit2',
@@ -19,6 +28,16 @@ const mockUnits: Unit[] = [
       { en: 'red', pl: 'czerwony' },
       { en: 'blue', pl: 'niebieski' },
       { en: 'green', pl: 'zielony' },
+    ],
+    groups: [
+      {
+        name: 'Colors',
+        words: [
+          { en: 'red', pl: 'czerwony' },
+          { en: 'blue', pl: 'niebieski' },
+          { en: 'green', pl: 'zielony' },
+        ],
+      },
     ],
   },
 ];

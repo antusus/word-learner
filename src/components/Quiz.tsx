@@ -5,6 +5,7 @@ import './Quiz.css';
 
 interface QuizProps {
   unit: Unit;
+  words?: Word[];
   onComplete: () => void;
   onExit: () => void;
 }
@@ -18,8 +19,9 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled;
 }
 
-export function Quiz({ unit, onComplete, onExit }: QuizProps) {
-  const shuffledWords = useMemo(() => shuffleArray(unit.words), [unit.words]);
+export function Quiz({ unit, words, onComplete, onExit }: QuizProps) {
+  const wordList = words ?? unit.words;
+  const shuffledWords = useMemo(() => shuffleArray(wordList), [wordList]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);

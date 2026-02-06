@@ -1,0 +1,137 @@
+.group-selector {
+  text-align: center;
+  padding: 1rem 0;
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.group-back {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.group-back:hover {
+  text-decoration: underline;
+}
+
+.group-selector h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.group-selector > p {
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.group-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.group-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 56px;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.group-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.group-item:active {
+  transform: translateY(0);
+}
+
+.group-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.group-name {
+  font-weight: 600;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.group-count {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.group-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  padding: 0 1rem;
+}
+
+.group-start {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 160px;
+  min-height: 56px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #764ba2 100%);
+  color: white;
+}
+
+.group-start:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.group-start:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.group-start:disabled {
+  background: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+  .group-selector {
+    padding: 2rem 0;
+  }
+
+  .group-item {
+    padding: 1rem 1.25rem;
+    min-height: 64px;
+  }
+
+  .group-start {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.25rem;
+    min-width: 180px;
+  }
+}

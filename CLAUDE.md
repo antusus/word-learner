@@ -61,3 +61,4 @@ yarn deploy
 - Do not commit directly to main
 - Use conventional commits (e.g., `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `test:`)
 - Claude will not co-author commits.
+- Cursor <cursoragent@cursor.com> will not co-author commits.

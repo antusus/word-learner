@@ -1,0 +1,91 @@
+{
+  "title": "Unit 5 - My words",
+  "groups": [
+    {
+      "name": "Animals",
+      "words": [
+        { "en": "alpaca", "pl": "alpaka" },
+        { "en": "capybara", "pl": "kapibara" },
+        { "en": "dolphin", "pl": "delfin" },
+        { "en": "donkey", "pl": "osioł" },
+        { "en": "guinea pig", "pl": "świnka morska (kawia domowa)" },
+        { "en": "lion", "pl": "lew" },
+        { "en": "lizard", "pl": "jaszczurka" },
+        { "en": "meerkat", "pl": "surykatka" },
+        { "en": "owl", "pl": "sowa" },
+        { "en": "sheep", "pl": "owca" },
+        { "en": "spider", "pl": "pająk" },
+        { "en": "tiger", "pl": "tygrys" },
+        { "en": "tortoise", "pl": "żółw" }
+      ]
+    },
+    {
+      "name": "Adjectives to describe animals",
+      "words": [
+        { "en": "beautiful", "pl": "piękny" },
+        { "en": "cute", "pl": "uroczy" },
+        { "en": "dangerous", "pl": "niebezpieczny" },
+        { "en": "endangered", "pl": "zagrożony" },
+        { "en": "farm", "pl": "wiejski, rolny" },
+        { "en": "intelligent", "pl": "inteligentny" },
+        { "en": "poisonous", "pl": "jadowity" },
+        { "en": "scary", "pl": "przerażający" },
+        { "en": "slow", "pl": "powolny" },
+        { "en": "ugly", "pl": "brzydki" },
+        { "en": "wild", "pl": "dziki" }
+      ]
+    },
+    {
+      "name": "Animals: parts of the body",
+      "words": [
+        { "en": "beak", "pl": "dziób" },
+        { "en": "claw", "pl": "pazur" },
+        { "en": "feather", "pl": "pióro" },
+        { "en": "fin", "pl": "płetwa" },
+        { "en": "fur", "pl": "futro" },
+        { "en": "paw", "pl": "łapa" },
+        { "en": "scale", "pl": "łuska" },
+        { "en": "shell", "pl": "skorupa" },
+        { "en": "tail", "pl": "ogon" },
+        { "en": "tongue", "pl": "język" },
+        { "en": "whisker", "pl": "wąs, wibrys" },
+        { "en": "wing", "pl": "skrzydło" }
+      ]
+    },
+    {
+      "name": "Real English",
+      "words": [
+        { "en": "Here we are.", "pl": "Jesteśmy na miejscu." },
+        {
+          "en": "Did you know that ...?",
+          "pl": "Czy wiedziałeś/wiedziałaś, że...?"
+        },
+        { "en": "Oh my gosh!", "pl": "Ojej!" },
+        { "en": "I told you!", "pl": "A nie mówiłem/mówiłam?" }
+      ]
+    },
+    {
+      "name": "Expressing opinions and asking for opinion",
+      "words": [
+        {
+          "en": "I think (guinea pigs are cute).",
+          "pl": "Myślę, że (świnki morskie są urocze)."
+        },
+        { "en": "I agree.", "pl": "Zgadzam się." },
+        {
+          "en": "I'm not sure it's a good idea.",
+          "pl": "Nie jestem pewien/pewna, że to jest dobry pomysł."
+        },
+        {
+          "en": "What do you think about (the book about crocodiles)?",
+          "pl": "Co myślisz na temat (książki o krokodylach)?"
+        },
+        { "en": "Are you OK with it?", "pl": "Czy to Ci pasuje?" },
+        { "en": "I don't think so.", "pl": "Nie sądzę." },
+        { "en": "You're right!", "pl": "Masz rację!" },
+        { "en": "Is that OK?", "pl": "Czy to jest w porządku?" },
+        { "en": "Yes, that's fine.", "pl": "Tak, to jest w porządku." }
+      ]
+    }
+  ]
+}

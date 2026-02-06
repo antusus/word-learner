@@ -1,8 +1,9 @@
 import type { ComponentType } from 'react';
-import type { Unit } from '../types';
+import type { Unit, Word } from '../types';
 
 export interface GameModeProps {
   unit: Unit;
+  words?: Word[];
   onComplete: () => void;
   onExit: () => void;
 }
