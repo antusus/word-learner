@@ -53,6 +53,9 @@ describe('App', () => {
     );
     await user.click(screen.getByRole('button', { name: 'Start' }));
 
+    // Select game mode
+    await user.click(screen.getByText('Flip Cards'));
+
     expect(
       screen.getByRole('heading', { level: 2, name: 'Unit 1 - Test Unit' }),
     ).toBeInTheDocument();
@@ -79,6 +82,9 @@ describe('App', () => {
     await user.click(screen.getByText('Unit 1 - Test Unit'));
     await user.click(screen.getByRole('checkbox', { name: /^Colors1 word$/ }));
     await user.click(screen.getByRole('button', { name: 'Start' }));
+
+    // Select game mode
+    await user.click(screen.getByText('Flip Cards'));
 
     // Complete all cards
     const totalWords = 1;
@@ -126,6 +132,9 @@ describe('App', () => {
       screen.getByRole('checkbox', { name: /^Animals2 words$/ }),
     );
     await user.click(screen.getByRole('button', { name: 'Start' }));
+
+    // Select game mode
+    await user.click(screen.getByText('Flip Cards'));
 
     // Should be in quiz with the selected group's words
     expect(

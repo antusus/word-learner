@@ -16,6 +16,7 @@ export interface GameMode {
 }
 
 import { Quiz } from '../components/Quiz';
+import { FillInBlanks } from './fillInBlanks/FillInBlanks';
 
 export const gameModes: GameMode[] = [
   {
@@ -23,6 +24,12 @@ export const gameModes: GameMode[] = [
     name: 'Flip Cards',
     description: 'Show Polish, reveal English',
     component: Quiz,
+  },
+  {
+    id: 'fill-in-blanks',
+    name: 'Fill in Blanks',
+    description: 'Fill missing letters in English words',
+    component: FillInBlanks,
   },
 ];
 
