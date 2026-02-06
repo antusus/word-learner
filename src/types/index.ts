@@ -19,3 +19,14 @@ export interface Unit {
   words: Word[]; // flattened from all groups
   groups: WordGroup[]; // structured groups
 }
+
+export interface DifficultyLevel {
+  id: string;
+  name: string;
+  description: string;
+  blankPercentage: number;
+}
+
+export interface DifficultyConfig {
+  difficulties: DifficultyLevel[];
+}
