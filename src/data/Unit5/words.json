@@ -6,14 +6,17 @@
       "words": [
         { "en": "alpaca", "pl": "alpaka" },
         { "en": "capybara", "pl": "kapibara" },
-        { "en": "chameleon", "pl": "kameleon" },
         { "en": "dolphin", "pl": "delfin" },
-        { "en": "elephant", "pl": "słoń" },
-        { "en": "giraffe", "pl": "żyrafa" },
-        { "en": "hamster", "pl": "chomik" },
-        { "en": "parrot", "pl": "papuga" },
-        { "en": "penguin", "pl": "pingwin" },
-        { "en": "whale", "pl": "wieloryb" }
+        { "en": "donkey", "pl": "osioł" },
+        { "en": "guinea pig", "pl": "świnka morska (kawia domowa)" },
+        { "en": "lion", "pl": "lew" },
+        { "en": "lizard", "pl": "jaszczurka" },
+        { "en": "meerkat", "pl": "surykatka" },
+        { "en": "owl", "pl": "sowa" },
+        { "en": "sheep", "pl": "owca" },
+        { "en": "spider", "pl": "pająk" },
+        { "en": "tiger", "pl": "tygrys" },
+        { "en": "tortoise", "pl": "żółw" }
       ]
     },
     {
@@ -22,12 +25,13 @@
         { "en": "beautiful", "pl": "piękny" },
         { "en": "cute", "pl": "uroczy" },
         { "en": "dangerous", "pl": "niebezpieczny" },
-        { "en": "fast", "pl": "szybki" },
-        { "en": "friendly", "pl": "przyjazny" },
-        { "en": "huge", "pl": "ogromny" },
-        { "en": "lazy", "pl": "leniwy" },
-        { "en": "strong", "pl": "silny" },
-        { "en": "tiny", "pl": "malutki" },
+        { "en": "endangered", "pl": "zagrożony" },
+        { "en": "farm", "pl": "wiejski, rolny" },
+        { "en": "intelligent", "pl": "inteligentny" },
+        { "en": "poisonous", "pl": "jadowity" },
+        { "en": "scary", "pl": "przerażający" },
+        { "en": "slow", "pl": "powolny" },
+        { "en": "ugly", "pl": "brzydki" },
         { "en": "wild", "pl": "dziki" }
       ]
     },
@@ -39,41 +43,36 @@
         { "en": "feather", "pl": "pióro" },
         { "en": "fin", "pl": "płetwa" },
         { "en": "fur", "pl": "futro" },
-        { "en": "hoof", "pl": "kopyto" },
-        { "en": "horn", "pl": "róg" },
         { "en": "paw", "pl": "łapa" },
+        { "en": "scale", "pl": "łuska" },
+        { "en": "shell", "pl": "skorupa" },
         { "en": "tail", "pl": "ogon" },
+        { "en": "tongue", "pl": "język" },
+        { "en": "whisker", "pl": "wąs, wibrys" },
         { "en": "wing", "pl": "skrzydło" }
       ]
     },
     {
-      "name": "Animal habitats",
+      "name": "Real English",
       "words": [
-        { "en": "burrow", "pl": "nora" },
-        { "en": "cave", "pl": "jaskinia" },
-        { "en": "desert", "pl": "pustynia" },
-        { "en": "forest", "pl": "las" },
-        { "en": "jungle", "pl": "dżungla" },
-        { "en": "nest", "pl": "gniazdo" },
-        { "en": "ocean", "pl": "ocean" },
-        { "en": "pond", "pl": "staw" },
-        { "en": "river", "pl": "rzeka" },
-        { "en": "savanna", "pl": "sawanna" }
+        { "en": "Here we are.", "pl": "Jesteśmy na miejscu." },
+        { "en": "Did you know that ...?", "pl": "Czy wiedziałeś/wiedziałaś, że...?" },
+        { "en": "Oh my gosh!", "pl": "Ojej!" },
+        { "en": "I told you!", "pl": "A nie mówiłem/mówiłam?" }
       ]
     },
     {
-      "name": "Animal actions",
+      "name": "Expressing opinions and asking for opinion",
       "words": [
-        { "en": "bark", "pl": "szczekać" },
-        { "en": "bite", "pl": "gryźć" },
-        { "en": "climb", "pl": "wspinać się" },
-        { "en": "fly", "pl": "latać" },
-        { "en": "growl", "pl": "warczeć" },
-        { "en": "hide", "pl": "chować się" },
-        { "en": "hunt", "pl": "polować" },
-        { "en": "jump", "pl": "skakać" },
-        { "en": "run", "pl": "biegać" },
-        { "en": "swim", "pl": "pływać" }
+        { "en": "I think (guinea pigs are cute).", "pl": "Myślę, że (świnki morskie są urocze)." },
+        { "en": "I agree.", "pl": "Zgadzam się." },
+        { "en": "I'm not sure it's a good idea.", "pl": "Nie jestem pewien/pewna, że to jest dobry pomysł." },
+        { "en": "What do you think about (the book about crocodiles)?", "pl": "Co myślisz na temat (książki o krokodylach)?" },
+        { "en": "Are you OK with it?", "pl": "Czy to Ci pasuje?" },
+        { "en": "I don't think so.", "pl": "Nie sądzę." },
+        { "en": "You're right!", "pl": "Masz rację!" },
+        { "en": "Is that OK?", "pl": "Czy to jest w porządku?" },
+        { "en": "Yes, that's fine.", "pl": "Tak, to jest w porządku." }
       ]
     }
   ]

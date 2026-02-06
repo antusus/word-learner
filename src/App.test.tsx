@@ -12,28 +12,30 @@ describe('App', () => {
 
   it('renders unit list', () => {
     render(<App />);
-    expect(screen.getByText('Unit 1 - Animals')).toBeInTheDocument();
-    expect(screen.getByText('Unit 2 - Colors')).toBeInTheDocument();
+    expect(screen.getByText('Unit 5 - My words')).toBeInTheDocument();
   });
 
-  it('navigates to quiz when unit is selected (single mode)', async () => {
+  it('navigates to quiz when unit and group is selected', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByText('Unit 1 - Animals'));
+    await user.click(screen.getByText('Unit 5 - My words'));
+    await user.click(
+      screen.getByRole('checkbox', { name: /^Animals13 words$/ }),
+    );
+    await user.click(screen.getByRole('button', { name: 'Start' }));
 
-    // Should go directly to quiz since only 1 mode exists
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Unit 1 - Animals' }),
+      screen.getByRole('heading', { level: 2, name: 'Unit 5 - My words' }),
     ).toBeInTheDocument();
     expect(screen.getByText(/1 \//)).toBeInTheDocument();
   });
 
-  it('navigates back to unit list from quiz', async () => {
+  it('navigates back to unit list from group selector', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByText('Unit 1 - Animals'));
+    await user.click(screen.getByText('Unit 5 - My words'));
     await user.click(screen.getByRole('button', { name: 'Back' }));
 
     expect(
@@ -45,11 +47,15 @@ describe('App', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    // Select unit
-    await user.click(screen.getByText('Unit 1 - Animals'));
+    // Select unit and group
+    await user.click(screen.getByText('Unit 5 - My words'));
+    await user.click(
+      screen.getByRole('checkbox', { name: /^Real English4 words$/ }),
+    );
+    await user.click(screen.getByRole('button', { name: 'Start' }));
 
     // Complete all cards
-    const totalWords = 8; // Unit 1 has 8 words
+    const totalWords = 4;
     for (let i = 0; i < totalWords; i++) {
       const flashcard = screen.getByRole('button', {
         name: /click to reveal/i,
@@ -69,19 +75,6 @@ describe('App', () => {
     expect(
       screen.getByRole('heading', { level: 1, name: 'Word Learner' }),
     ).toBeInTheDocument();
-  });
-
-  it('skips group selection for single-group units', async () => {
-    const user = userEvent.setup();
-    render(<App />);
-
-    await user.click(screen.getByText('Unit 1 - Animals'));
-
-    // Should go directly to quiz (no group selector)
-    expect(
-      screen.getByRole('heading', { level: 2, name: 'Unit 1 - Animals' }),
-    ).toBeInTheDocument();
-    expect(screen.getByText(/1 \//)).toBeInTheDocument();
   });
 
   it('shows group selector for multi-group units', async () => {
@@ -106,7 +99,7 @@ describe('App', () => {
 
     // Select one group and start
     await user.click(
-      screen.getByRole('checkbox', { name: /^Animals10 words$/ }),
+      screen.getByRole('checkbox', { name: /^Animals13 words$/ }),
     );
     await user.click(screen.getByRole('button', { name: 'Start' }));
 
@@ -114,7 +107,7 @@ describe('App', () => {
     expect(
       screen.getByRole('heading', { level: 2, name: 'Unit 5 - My words' }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/1 \/ 10/)).toBeInTheDocument();
+    expect(screen.getByText(/1 \/ 13/)).toBeInTheDocument();
   });
 
   it('navigates back from group selector to unit list', async () => {
