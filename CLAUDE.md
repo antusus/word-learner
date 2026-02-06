@@ -60,4 +60,5 @@ yarn deploy
 - Always create a feature branch and open a pull request for changes
 - Do not commit directly to main
 - Use conventional commits (e.g., `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `test:`)
-- Claude and Cursor will not co-author commits.
+- Claude will not co-author commits.
+- Cursor <cursoragent@cursor.com> will not co-author commits.
