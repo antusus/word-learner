@@ -3,13 +3,19 @@ export interface Word {
   pl: string;
 }
 
+export interface WordGroup {
+  name: string;
+  words: Word[];
+}
+
 export interface WordsFile {
   title: string;
-  words: Word[];
+  groups: WordGroup[];
 }
 
 export interface Unit {
   id: string;
   title: string;
-  words: Word[];
+  words: Word[]; // flattened from all groups
+  groups: WordGroup[]; // structured groups
 }

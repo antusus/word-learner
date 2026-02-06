@@ -11,6 +11,16 @@ const mockUnit: Unit = {
     { en: 'dog', pl: 'pies' },
     { en: 'bird', pl: 'ptak' },
   ],
+  groups: [
+    {
+      name: 'Animals',
+      words: [
+        { en: 'cat', pl: 'kot' },
+        { en: 'dog', pl: 'pies' },
+        { en: 'bird', pl: 'ptak' },
+      ],
+    },
+  ],
 };
 
 describe('Quiz', () => {
@@ -113,5 +123,23 @@ describe('Quiz', () => {
 
     await user.click(screen.getByRole('button', { name: 'Back to Units' }));
     expect(onExit).toHaveBeenCalledTimes(1);
+  });
+
+  it('uses words prop instead of unit.words when provided', () => {
+    const customWords = [
+      { en: 'red', pl: 'czerwony' },
+      { en: 'blue', pl: 'niebieski' },
+    ];
+    render(
+      <Quiz
+        unit={mockUnit}
+        words={customWords}
+        onComplete={() => {}}
+        onExit={() => {}}
+      />,
+    );
+
+    // Should show 1 / 2 (from words prop) not 1 / 3 (from unit.words)
+    expect(screen.getByText(/1 \/ 2/)).toBeInTheDocument();
   });
 });

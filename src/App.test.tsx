@@ -70,4 +70,64 @@ describe('App', () => {
       screen.getByRole('heading', { level: 1, name: 'Word Learner' }),
     ).toBeInTheDocument();
   });
+
+  it('skips group selection for single-group units', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByText('Unit 1 - Animals'));
+
+    // Should go directly to quiz (no group selector)
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'Unit 1 - Animals' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/1 \//)).toBeInTheDocument();
+  });
+
+  it('shows group selector for multi-group units', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByText('Unit 5 - My words'));
+
+    // Should show group selector
+    expect(screen.getByText('Select groups to practice:')).toBeInTheDocument();
+    expect(screen.getByText('Animals')).toBeInTheDocument();
+    expect(
+      screen.getByText('Adjectives to describe animals'),
+    ).toBeInTheDocument();
+  });
+
+  it('navigates from group selector to quiz with selected words', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByText('Unit 5 - My words'));
+
+    // Select one group and start
+    await user.click(
+      screen.getByRole('checkbox', { name: /^Animals10 words$/ }),
+    );
+    await user.click(screen.getByRole('button', { name: 'Start' }));
+
+    // Should be in quiz with the selected group's words
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'Unit 5 - My words' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/1 \/ 10/)).toBeInTheDocument();
+  });
+
+  it('navigates back from group selector to unit list', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByText('Unit 5 - My words'));
+    expect(screen.getByText('Select groups to practice:')).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: 'Back' }));
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Word Learner' }),
+    ).toBeInTheDocument();
+  });
 });

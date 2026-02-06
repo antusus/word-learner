@@ -1,0 +1,80 @@
+{
+  "title": "Unit 5 - My words",
+  "groups": [
+    {
+      "name": "Animals",
+      "words": [
+        { "en": "alpaca", "pl": "alpaka" },
+        { "en": "capybara", "pl": "kapibara" },
+        { "en": "chameleon", "pl": "kameleon" },
+        { "en": "dolphin", "pl": "delfin" },
+        { "en": "elephant", "pl": "słoń" },
+        { "en": "giraffe", "pl": "żyrafa" },
+        { "en": "hamster", "pl": "chomik" },
+        { "en": "parrot", "pl": "papuga" },
+        { "en": "penguin", "pl": "pingwin" },
+        { "en": "whale", "pl": "wieloryb" }
+      ]
+    },
+    {
+      "name": "Adjectives to describe animals",
+      "words": [
+        { "en": "beautiful", "pl": "piękny" },
+        { "en": "cute", "pl": "uroczy" },
+        { "en": "dangerous", "pl": "niebezpieczny" },
+        { "en": "fast", "pl": "szybki" },
+        { "en": "friendly", "pl": "przyjazny" },
+        { "en": "huge", "pl": "ogromny" },
+        { "en": "lazy", "pl": "leniwy" },
+        { "en": "strong", "pl": "silny" },
+        { "en": "tiny", "pl": "malutki" },
+        { "en": "wild", "pl": "dziki" }
+      ]
+    },
+    {
+      "name": "Animals: parts of the body",
+      "words": [
+        { "en": "beak", "pl": "dziób" },
+        { "en": "claw", "pl": "pazur" },
+        { "en": "feather", "pl": "pióro" },
+        { "en": "fin", "pl": "płetwa" },
+        { "en": "fur", "pl": "futro" },
+        { "en": "hoof", "pl": "kopyto" },
+        { "en": "horn", "pl": "róg" },
+        { "en": "paw", "pl": "łapa" },
+        { "en": "tail", "pl": "ogon" },
+        { "en": "wing", "pl": "skrzydło" }
+      ]
+    },
+    {
+      "name": "Animal habitats",
+      "words": [
+        { "en": "burrow", "pl": "nora" },
+        { "en": "cave", "pl": "jaskinia" },
+        { "en": "desert", "pl": "pustynia" },
+        { "en": "forest", "pl": "las" },
+        { "en": "jungle", "pl": "dżungla" },
+        { "en": "nest", "pl": "gniazdo" },
+        { "en": "ocean", "pl": "ocean" },
+        { "en": "pond", "pl": "staw" },
+        { "en": "river", "pl": "rzeka" },
+        { "en": "savanna", "pl": "sawanna" }
+      ]
+    },
+    {
+      "name": "Animal actions",
+      "words": [
+        { "en": "bark", "pl": "szczekać" },
+        { "en": "bite", "pl": "gryźć" },
+        { "en": "climb", "pl": "wspinać się" },
+        { "en": "fly", "pl": "latać" },
+        { "en": "growl", "pl": "warczeć" },
+        { "en": "hide", "pl": "chować się" },
+        { "en": "hunt", "pl": "polować" },
+        { "en": "jump", "pl": "skakać" },
+        { "en": "run", "pl": "biegać" },
+        { "en": "swim", "pl": "pływać" }
+      ]
+    }
+  ]
+}
