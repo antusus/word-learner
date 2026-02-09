@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import type { Word } from '../../types';
 import type { CharSlot } from './blanking';
+import { Hint } from './Hint';
 
 interface WordChallengeProps {
   word: Word;
@@ -33,7 +34,6 @@ export function WordChallenge({
   submitted,
 }: WordChallengeProps) {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const [hintRevealed, setHintRevealed] = useState(false);
   const blankIndices = useMemo(
     () =>
       slots.reduce<number[]>((acc, s, i) => {
@@ -44,7 +44,6 @@ export function WordChallenge({
   );
 
   useEffect(() => {
-    setHintRevealed(false);
     if (!submitted && blankIndices.length > 0) {
       inputRefs.current[blankIndices[0]]?.focus();
     }
@@ -102,19 +101,7 @@ export function WordChallenge({
 
   return (
     <div className="fib-challenge">
-      <div className="fib-hint">
-        {hintRevealed ? (
-          <p className="fib-prompt">{word.pl}</p>
-        ) : (
-          <button
-            type="button"
-            className="fib-hint-button"
-            onClick={() => setHintRevealed(true)}
-          >
-            Show translation
-          </button>
-        )}
-      </div>
+      <Hint translation={word.pl} />
       <div className="fib-word">
         {wordGroups.map((group) => (
           <span key={group[0].index} className="fib-word-group">
