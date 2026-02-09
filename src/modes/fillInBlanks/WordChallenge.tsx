@@ -8,6 +8,7 @@ interface WordChallengeProps {
   slots: CharSlot[];
   userInput: string[];
   onChange: (input: string[]) => void;
+  onSubmit?: () => void;
   submitted?: boolean;
 }
 
@@ -31,6 +32,7 @@ export function WordChallenge({
   slots,
   userInput,
   onChange,
+  onSubmit,
   submitted,
 }: WordChallengeProps) {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -66,7 +68,9 @@ export function WordChallenge({
     slotIndex: number,
     e: React.KeyboardEvent<HTMLInputElement>,
   ) => {
-    if (e.key === 'Backspace' && !userInput[slotIndex]) {
+    if (e.key === 'Enter') {
+      onSubmit?.();
+    } else if (e.key === 'Backspace' && !userInput[slotIndex]) {
       const pos = blankIndices.indexOf(slotIndex);
       if (pos > 0) {
         const prevIndex = blankIndices[pos - 1];

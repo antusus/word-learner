@@ -127,6 +127,27 @@ describe('WordChallenge', () => {
     expect(secondInput).toHaveFocus();
   });
 
+  it('calls onSubmit when Enter is pressed', async () => {
+    const onSubmit = vi.fn();
+    const user = userEvent.setup();
+
+    render(
+      <WordChallenge
+        word={word}
+        slots={slots}
+        userInput={[]}
+        onChange={() => {}}
+        onSubmit={onSubmit}
+      />,
+    );
+
+    const input = screen.getByRole('textbox', { name: 'Letter 2' });
+    await user.click(input);
+    await user.keyboard('{Enter}');
+
+    expect(onSubmit).toHaveBeenCalledOnce();
+  });
+
   it('moves focus to previous blank on backspace when empty', async () => {
     const twoBlankSlots: CharSlot[] = [
       { char: 'c', isBlank: true, index: 0 },
