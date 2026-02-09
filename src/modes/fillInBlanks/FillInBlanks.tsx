@@ -120,6 +120,7 @@ export function FillInBlanks({
           slots={currentSlots}
           userInput={userInput}
           onChange={setUserInput}
+          onSubmit={handleNext}
         />
       )}
 

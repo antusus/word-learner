@@ -1,12 +1,14 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import type { Word } from '../../types';
 import type { CharSlot } from './blanking';
+import { Hint } from './Hint';
 
 interface WordChallengeProps {
   word: Word;
   slots: CharSlot[];
   userInput: string[];
   onChange: (input: string[]) => void;
+  onSubmit?: () => void;
   submitted?: boolean;
 }
 
@@ -30,10 +32,10 @@ export function WordChallenge({
   slots,
   userInput,
   onChange,
+  onSubmit,
   submitted,
 }: WordChallengeProps) {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const [hintRevealed, setHintRevealed] = useState(false);
   const blankIndices = useMemo(
     () =>
       slots.reduce<number[]>((acc, s, i) => {
@@ -44,7 +46,6 @@ export function WordChallenge({
   );
 
   useEffect(() => {
-    setHintRevealed(false);
     if (!submitted && blankIndices.length > 0) {
       inputRefs.current[blankIndices[0]]?.focus();
     }
@@ -67,7 +68,9 @@ export function WordChallenge({
     slotIndex: number,
     e: React.KeyboardEvent<HTMLInputElement>,
   ) => {
-    if (e.key === 'Backspace' && !userInput[slotIndex]) {
+    if (e.key === 'Enter') {
+      onSubmit?.();
+    } else if (e.key === 'Backspace' && !userInput[slotIndex]) {
       const pos = blankIndices.indexOf(slotIndex);
       if (pos > 0) {
         const prevIndex = blankIndices[pos - 1];
@@ -102,19 +105,7 @@ export function WordChallenge({
 
   return (
     <div className="fib-challenge">
-      <div className="fib-hint">
-        {hintRevealed ? (
-          <p className="fib-prompt">{word.pl}</p>
-        ) : (
-          <button
-            type="button"
-            className="fib-hint-button"
-            onClick={() => setHintRevealed(true)}
-          >
-            Show translation
-          </button>
-        )}
-      </div>
+      <Hint translation={word.pl} />
       <div className="fib-word">
         {wordGroups.map((group) => (
           <span key={group[0].index} className="fib-word-group">
