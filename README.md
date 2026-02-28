@@ -64,6 +64,40 @@ yarn deploy     # Build and deploy to GitHub Pages
 
 This runs `yarn build` first (via `predeploy`) then publishes the `dist` folder to GitHub Pages using `gh-pages`.
 
+## Install on iPad + Reminders
+
+1. Open `https://antusus.github.io/word-learner/` in Safari on your iPad.
+2. Tap Share, then choose **Add to Home Screen**.
+3. Name it (for example, `Word Learner`) and tap **Add**.
+
+### Add recurring reminders
+
+Two easy options:
+
+- **Apple Reminders:** create a reminder like `Practice Word Learner`, set it to repeat daily or weekdays.
+- **Apple Shortcuts:** create a personal automation (time of day) with action `Open URLs` and set URL to `https://antusus.github.io/word-learner/`.
+
+This gives you app-like launching now, and works with the current GitHub Pages deployment.
+
+
+## Install on Android
+
+1. Open `https://antusus.github.io/word-learner/` in Chrome on your Android device.
+2. Tap the browser menu (`⋮`) and choose **Install app** (or **Add to Home screen**).
+3. Confirm the install prompt.
+
+### Offline and storage notes (Android)
+
+- Open the app once while online so required assets are cached.
+- After that, the app should start from the home screen in standalone mode.
+- Progress is stored in browser storage on the device.
+- Clearing browser/site data may remove cached files and saved progress.
+
+### Optional: recurring reminders on Android
+
+- Use **Google Calendar** recurring events with notifications, or
+- Use **Google Assistant / Reminders** for daily practice
+
 ## Project Structure
 
 ```
