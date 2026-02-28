@@ -1,0 +1,105 @@
+{
+  "title": "Unit 6 - My words",
+  "groups": [
+    {
+      "name": "Months",
+      "words": [
+        { "en": "January", "pl": "styczeń" },
+        { "en": "February", "pl": "luty" },
+        { "en": "March", "pl": "marzec" },
+        { "en": "April", "pl": "kwiecień" },
+        { "en": "May", "pl": "maj" },
+        { "en": "June", "pl": "czerwiec" },
+        { "en": "July", "pl": "lipiec" },
+        { "en": "August", "pl": "sierpień" },
+        { "en": "September", "pl": "wrzesień" },
+        { "en": "October", "pl": "październik" },
+        { "en": "November", "pl": "listopad" },
+        { "en": "December", "pl": "grudzień" }
+      ]
+    },
+    {
+      "name": "Jobs",
+      "words": [
+        { "en": "astronaut", "pl": "astronauta/astronautka" },
+        { "en": "astronomer", "pl": "astronom/astronomka" },
+        { "en": "composer", "pl": "kompozytor/kompozytorka" },
+        { "en": "doctor", "pl": "lekarz/lekarka" },
+        { "en": "explorer", "pl": "odkrywca/odkrywczyni" },
+        { "en": "inventor", "pl": "wynalazca/wynalazcyni" },
+        { "en": "nurse", "pl": "pielęgniarz/pielęgniarka" },
+        { "en": "painter", "pl": "malarz/malarka" },
+        { "en": "pilot", "pl": "pilot/pilotka" },
+        { "en": "poet", "pl": "poeta/poetka" },
+        { "en": "scientist", "pl": "naukowiec/naukowczyni" },
+        { "en": "writer", "pl": "pisarz/pisarka" }
+      ]
+    },
+    {
+      "name": "Ordinal numbers",
+      "words": [
+        { "en": "first", "pl": "pierwszy" },
+        { "en": "second", "pl": "drugi" },
+        { "en": "third", "pl": "trzeci" },
+        { "en": "fourth", "pl": "czwarty" },
+        { "en": "fifth", "pl": "piąty" },
+        { "en": "sixth", "pl": "szósty" },
+        { "en": "seventh", "pl": "siódmy" },
+        { "en": "eighth", "pl": "ósmy" },
+        { "en": "ninth", "pl": "dziewiąty" },
+        { "en": "tenth", "pl": "dziesiąty" },
+        { "en": "eleventh", "pl": "jedenasty" },
+        { "en": "twelfth", "pl": "dwunasty" },
+        { "en": "twentieth", "pl": "dwudziesty" },
+        { "en": "twenty-first", "pl": "dwudziesty pierwszy" },
+        { "en": "twenty-second", "pl": "dwudziesty drugi" }
+      ]
+    },
+    {
+      "name": "Years",
+      "words": [
+        { "en": "1700 (seventeen hundred)", "pl": "rok tysiac siedemsetny" },
+        {
+          "en": "1865 (eighteen sixty-five)",
+          "pl": "rok tysiac osiemset sześćdziesiąty piąty"
+        },
+        {
+          "en": "1905 (nineteen oh five)",
+          "pl": "rok tysiac dziewięćset piąty"
+        },
+        { "en": "2005 (two thousand and five)", "pl": "rok dwa tysiac piąty" }
+      ]
+    },
+    {
+      "name": "Real English",
+      "words": [
+        { "en": "It's your turn.", "pl": "Twoja kolej." },
+        { "en": "Don't give up!", "pl": "Nie poddawaj się!" },
+        { "en": "Give it your best shot!", "pl": "Daj z siebie wszystko!" },
+        { "en": "The champions!", "pl": "Mistrzowie!" },
+        {
+          "en": "Happy birthday!",
+          "pl": "Wszystkiego najlepszego z okazji urodzin!"
+        },
+        { "en": "Thanks for remembering.", "pl": "Dziękuję za pamięć." },
+        {
+          "en": "That's great news, well done!",
+          "pl": "Wspaniałe wieści, dobra robota!"
+        },
+        {
+          "en": "Thanks. That's nice of you.",
+          "pl": "Dziękuję. To miło z twojej strony."
+        },
+        {
+          "en": "Congratulations, way to go!",
+          "pl": "Gratulacje, tak trzymać!"
+        },
+        { "en": "Good luck (on Saturday)!", "pl": "Powodzenia (w sobotę)!" },
+        {
+          "en": "You're a good friend.",
+          "pl": "Jesteś dobrym przyjacielem / dobrą przyjaciółką."
+        }
+      ]
+    }
+  ]
+}

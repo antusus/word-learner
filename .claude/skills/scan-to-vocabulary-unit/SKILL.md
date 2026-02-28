@@ -13,6 +13,11 @@ The user provides a file path to an image (JPEG, PNG, etc.) containing a vocabul
 
 Read the image using your vision capabilities.
 
+If the path is absolute, check if the file exists and use it for extraction.
+If the path is relative, check if the file exists and do the extraction.
+If only file name without extension is provided, check the `/Users/kberdychowski/Pictures` folder and look for the file with the name and some graphical extension like: `jpg` or `png`.
+If several files, or file names are provide, repeat the process for each of the files.
+
 ## Extraction
 
 Parse the image and extract:
