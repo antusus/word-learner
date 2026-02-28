@@ -19,6 +19,7 @@ dist-ssr
 .claude/*
 !.claude/CLAUDE.md
 !.claude/skills/
+!.claude/hooks/
 .DS_Store
 *.suo
 *.ntvs*

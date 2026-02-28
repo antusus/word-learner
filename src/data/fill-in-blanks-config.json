@@ -15,8 +15,8 @@
     {
       "id": "hard",
       "name": "Hard",
-      "description": "75% of letters hidden",
-      "blankPercentage": 0.75
+      "description": "60% of letters hidden",
+      "blankPercentage": 0.60
     }
   ]
 }
