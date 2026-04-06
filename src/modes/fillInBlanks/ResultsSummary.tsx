@@ -48,6 +48,7 @@ export function ResultsSummary({
                       userChar.toLowerCase() === char.toLowerCase();
                     return (
                       <span
+                        // biome-ignore lint/suspicious/noArrayIndexKey: characters are static positional data — index is the correct key
                         key={`${r.word.en}-${i}`}
                         className={
                           isCorrect ? 'fib-letter-correct' : 'fib-letter-wrong'
