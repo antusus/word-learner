@@ -9,10 +9,7 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: 'autoUpdate',
-      workbox: {
-        mode: 'development',
-      },
+      registerType: 'prompt',
       includeAssets: ['favicon.svg', 'icon.svg'],
       manifest: {
         name: 'Word Learner',
@@ -26,15 +23,15 @@ export default defineConfig({
         icons: [
           {
             src: `${basePath}icon.svg`,
-            sizes: '192x192',
+            sizes: 'any',
             type: 'image/svg+xml',
             purpose: 'any',
           },
           {
             src: `${basePath}icon.svg`,
-            sizes: '512x512',
+            sizes: 'any',
             type: 'image/svg+xml',
-            purpose: 'any',
+            purpose: 'maskable',
           },
         ],
       },
