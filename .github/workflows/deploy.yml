@@ -22,6 +22,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Verify registry URLs in yarn.lock
+        run: |
+          if grep -E 'resolved "https?://' yarn.lock | grep -v 'https://registry.npmjs.org' | grep -v 'https://registry.yarnpkg.com'; then
+            echo "::error::yarn.lock contains references to non-public registries!"
+            exit 1
+          fi
+
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
