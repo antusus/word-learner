@@ -13,7 +13,7 @@ export default defineConfig({
       workbox: {
         mode: 'development',
       },
-      includeAssets: ['favicon.svg', 'icon-192.svg', 'icon-512.svg'],
+      includeAssets: ['favicon.svg', 'icon.svg'],
       manifest: {
         name: 'Word Learner',
         short_name: 'WordLearner',
@@ -25,13 +25,13 @@ export default defineConfig({
         theme_color: '#667eea',
         icons: [
           {
-            src: `${basePath}icon-192.svg`,
+            src: `${basePath}icon.svg`,
             sizes: '192x192',
             type: 'image/svg+xml',
             purpose: 'any',
           },
           {
-            src: `${basePath}icon-512.svg`,
+            src: `${basePath}icon.svg`,
             sizes: '512x512',
             type: 'image/svg+xml',
             purpose: 'any',
