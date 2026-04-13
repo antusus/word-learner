@@ -356,14 +356,4 @@
     min-height: 88px;
   }
 
-  .fib-error-cards {
-    flex-direction: row;
-    justify-content: center;
-    gap: 1.5rem;
-    align-items: flex-start;
-  }
-
-  .fib-error-card {
-    width: auto;
-  }
 }
