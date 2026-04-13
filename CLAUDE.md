@@ -62,3 +62,4 @@ yarn deploy
 - Use conventional commits (e.g., `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `test:`)
 - Claude will not co-author commits.
 - Cursor <cursoragent@cursor.com> will not co-author commits.
+- Plan must incude automated tests.
