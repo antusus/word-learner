@@ -63,3 +63,4 @@ yarn deploy
 - Claude will not co-author commits.
 - Cursor <cursoragent@cursor.com> will not co-author commits.
 - Plan must incude automated tests.
+- Make sure tests and linter are passing before telling user that implementation is done.
