@@ -41,23 +41,44 @@ export function ResultsSummary({
             {errors.map((r) => (
               <li key={r.word.en} className="fib-error-item">
                 <span className="fib-error-polish">{r.word.pl}</span>
-                <div className="fib-error-letters">
-                  {r.word.en.split('').map((char, i) => {
-                    const userChar = r.userAnswer[i] ?? '';
-                    const isCorrect =
-                      userChar.toLowerCase() === char.toLowerCase();
-                    return (
-                      <span
-                        // biome-ignore lint/suspicious/noArrayIndexKey: characters are static positional data — index is the correct key
-                        key={`${r.word.en}-${i}`}
-                        className={
-                          isCorrect ? 'fib-letter-correct' : 'fib-letter-wrong'
-                        }
-                      >
-                        {char}
-                      </span>
-                    );
-                  })}
+                <div className="fib-error-cards">
+                  <div className="fib-error-card">
+                    <span className="fib-error-card-label">You typed</span>
+                    <div className="fib-error-letters">
+                      {r.word.en.split('').map((char, i) => {
+                        const userChar = r.userAnswer[i] ?? ' ';
+                        const isCorrect =
+                          userChar.toLowerCase() === char.toLowerCase();
+                        return (
+                          <span
+                            // biome-ignore lint/suspicious/noArrayIndexKey: characters are static positional data — index is the correct key
+                            key={`${r.word.en}-user-${i}`}
+                            className={
+                              isCorrect
+                                ? 'fib-letter-correct'
+                                : 'fib-letter-wrong'
+                            }
+                          >
+                            {userChar}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div className="fib-error-card">
+                    <span className="fib-error-card-label">Correct</span>
+                    <div className="fib-error-letters">
+                      {r.word.en.split('').map((char, i) => (
+                        <span
+                          // biome-ignore lint/suspicious/noArrayIndexKey: characters are static positional data — index is the correct key
+                          key={`${r.word.en}-correct-${i}`}
+                          className="fib-letter-correct"
+                        >
+                          {char}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </li>
             ))}
