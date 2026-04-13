@@ -264,6 +264,29 @@
   gap: 0.125rem;
 }
 
+.fib-error-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.fib-error-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  width: 100%;
+}
+
+.fib-error-card-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .fib-letter-correct,
 .fib-letter-wrong {
   display: inline-flex;
@@ -331,5 +354,16 @@
 
   .fib-difficulty-button {
     min-height: 88px;
+  }
+
+  .fib-error-cards {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .fib-error-card {
+    width: auto;
   }
 }

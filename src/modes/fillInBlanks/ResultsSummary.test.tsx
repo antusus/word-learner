@@ -61,17 +61,33 @@ describe('ResultsSummary', () => {
         onExit={() => {}}
       />,
     );
-    const letters = screen.getAllByText(/^[a-z]$/);
-    const correctLetter = letters.find(
-      (el) =>
-        el.textContent === 'a' && el.className.includes('fib-letter-correct'),
-    );
+    const letters = screen.getAllByText(/^[a-z ]$/);
     const wrongLetter = letters.find(
       (el) =>
-        el.textContent === 'b' && el.className.includes('fib-letter-wrong'),
+        el.textContent === 'z' && el.className.includes('fib-letter-wrong'),
     );
-    expect(correctLetter).toBeDefined();
+    const correctLetter = letters.find(
+      (el) =>
+        el.textContent === 'b' && el.className.includes('fib-letter-correct'),
+    );
     expect(wrongLetter).toBeDefined();
+    expect(correctLetter).toBeDefined();
+  });
+
+  it("shows 'You typed' and 'Correct' labels for wrong entries", () => {
+    const results: WordResult[] = [
+      { word: { en: 'ab', pl: 'x' }, userAnswer: ['a', 'z'], correct: false },
+    ];
+    render(
+      <ResultsSummary
+        results={results}
+        unitTitle="Unit 1"
+        totalWords={1}
+        onExit={() => {}}
+      />,
+    );
+    expect(screen.getByText('You typed')).toBeInTheDocument();
+    expect(screen.getByText('Correct')).toBeInTheDocument();
   });
 
   it('calls onExit when back button is clicked', async () => {
