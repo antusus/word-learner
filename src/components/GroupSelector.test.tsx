@@ -1,27 +1,27 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type { WordGroup } from '../types';
+import type { ChallengeGroup } from '../types';
 import { GroupSelector } from './GroupSelector';
 
-const mockGroups: WordGroup[] = [
+const mockGroups: ChallengeGroup[] = [
   {
     name: 'Animals',
-    words: [
-      { en: 'cat', pl: 'kot' },
-      { en: 'dog', pl: 'pies' },
+    items: [
+      { prompt: 'kot', answer: 'cat' },
+      { prompt: 'pies', answer: 'dog' },
     ],
   },
   {
     name: 'Colors',
-    words: [
-      { en: 'red', pl: 'czerwony' },
-      { en: 'blue', pl: 'niebieski' },
-      { en: 'green', pl: 'zielony' },
+    items: [
+      { prompt: 'czerwony', answer: 'red' },
+      { prompt: 'niebieski', answer: 'blue' },
+      { prompt: 'zielony', answer: 'green' },
     ],
   },
   {
     name: 'Shapes',
-    words: [{ en: 'circle', pl: 'koło' }],
+    items: [{ prompt: 'koło', answer: 'circle' }],
   },
 ];
 
@@ -30,6 +30,7 @@ describe('GroupSelector', () => {
     render(
       <GroupSelector
         unitTitle="Unit 5"
+        unitType="vocabulary"
         groups={mockGroups}
         onStart={() => {}}
         onBack={() => {}}
@@ -50,6 +51,7 @@ describe('GroupSelector', () => {
     render(
       <GroupSelector
         unitTitle="Unit 5"
+        unitType="vocabulary"
         groups={mockGroups}
         onStart={() => {}}
         onBack={() => {}}
@@ -69,6 +71,7 @@ describe('GroupSelector', () => {
     render(
       <GroupSelector
         unitTitle="Unit 5"
+        unitType="vocabulary"
         groups={mockGroups}
         onStart={() => {}}
         onBack={() => {}}
@@ -84,6 +87,7 @@ describe('GroupSelector', () => {
     render(
       <GroupSelector
         unitTitle="Unit 5"
+        unitType="vocabulary"
         groups={mockGroups}
         onStart={() => {}}
         onBack={() => {}}
@@ -99,12 +103,13 @@ describe('GroupSelector', () => {
     expect(checkboxes[2]).not.toBeChecked();
   });
 
-  it('clicking Start calls onStart with the selected groups words', async () => {
+  it('clicking Start calls onStart with the selected groups items', async () => {
     const user = userEvent.setup();
     const onStart = vi.fn();
     render(
       <GroupSelector
         unitTitle="Unit 5"
+        unitType="vocabulary"
         groups={mockGroups}
         onStart={onStart}
         onBack={() => {}}
@@ -117,9 +122,9 @@ describe('GroupSelector', () => {
 
     expect(onStart).toHaveBeenCalledTimes(1);
     expect(onStart).toHaveBeenCalledWith([
-      { en: 'cat', pl: 'kot' },
-      { en: 'dog', pl: 'pies' },
-      { en: 'circle', pl: 'koło' },
+      { prompt: 'kot', answer: 'cat' },
+      { prompt: 'pies', answer: 'dog' },
+      { prompt: 'koło', answer: 'circle' },
     ]);
   });
 
@@ -129,6 +134,7 @@ describe('GroupSelector', () => {
     render(
       <GroupSelector
         unitTitle="Unit 5"
+        unitType="vocabulary"
         groups={mockGroups}
         onStart={() => {}}
         onBack={onBack}
@@ -137,5 +143,33 @@ describe('GroupSelector', () => {
 
     await user.click(screen.getByRole('button', { name: 'Back' }));
     expect(onBack).toHaveBeenCalledTimes(1);
+  });
+
+  it('shows "verbs" instead of "words" for irregular-verbs unit type', () => {
+    const verbGroups: ChallengeGroup[] = [
+      {
+        name: 'Common verbs',
+        items: [
+          { prompt: 'go', answer: 'went' },
+          { prompt: 'see', answer: 'saw' },
+        ],
+      },
+      {
+        name: 'Single verb',
+        items: [{ prompt: 'be', answer: 'was' }],
+      },
+    ];
+    render(
+      <GroupSelector
+        unitTitle="Irregular Verbs 1"
+        unitType="irregular-verbs"
+        groups={verbGroups}
+        onStart={() => {}}
+        onBack={() => {}}
+      />,
+    );
+
+    expect(screen.getByText('2 verbs')).toBeInTheDocument();
+    expect(screen.getByText('1 verb')).toBeInTheDocument();
   });
 });

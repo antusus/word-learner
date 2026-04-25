@@ -1,6 +1,18 @@
+export type UnitType = 'vocabulary' | 'irregular-verbs';
+
 export interface Word {
   en: string;
   pl: string;
+}
+
+export interface IrregularVerb {
+  base: string;
+  pastSimple: string;
+}
+
+export interface ChallengeItem {
+  prompt: string;
+  answer: string;
 }
 
 export interface WordGroup {
@@ -8,16 +20,30 @@ export interface WordGroup {
   words: Word[];
 }
 
+export interface IrregularVerbGroup {
+  name: string;
+  words: IrregularVerb[];
+}
+
+export interface ChallengeGroup {
+  name: string;
+  items: ChallengeItem[];
+}
+
 export interface WordsFile {
   title: string;
-  groups: WordGroup[];
+  type?: UnitType;
+  groups: WordGroup[] | IrregularVerbGroup[];
 }
 
 export interface Unit {
   id: string;
   title: string;
-  words: Word[]; // flattened from all groups
-  groups: WordGroup[]; // structured groups
+  type: UnitType;
+  words: Word[];
+  groups: WordGroup[];
+  challenges: ChallengeItem[];
+  challengeGroups: ChallengeGroup[];
 }
 
 export interface DifficultyLevel {

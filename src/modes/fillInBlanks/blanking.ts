@@ -24,6 +24,7 @@ export interface CharSlot {
 export function generateBlanks(
   word: string,
   blankPercentage: number,
+  allowFullBlank = false,
 ): CharSlot[] {
   const chars = word.split('');
   const letterIndices = chars.reduce<number[]>((acc, ch, i) => {
@@ -35,6 +36,8 @@ export function generateBlanks(
 
   let blankCount: number;
   if (letterCount <= 1) {
+    blankCount = letterCount;
+  } else if (allowFullBlank && blankPercentage >= 1) {
     blankCount = letterCount;
   } else {
     blankCount = Math.round(letterCount * blankPercentage);

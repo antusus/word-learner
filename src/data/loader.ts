@@ -1,4 +1,5 @@
-import type { Unit, WordsFile } from '../types';
+import type { Unit, UnitType, WordGroup, WordsFile } from '../types';
+import { mapGroupsToChallenges } from './challengeMapper';
 
 const wordModules = import.meta.glob<WordsFile>('./*/words.json', {
   eager: true,
@@ -12,12 +13,26 @@ export function parseUnits(modules: Record<string, WordsFile>): Unit[] {
     const match = path.match(/\.\/([^/]+)\/words\.json$/);
     if (match) {
       const id = match[1];
-      const words = data.groups.flatMap((group) => group.words);
+      const type: UnitType = data.type ?? 'vocabulary';
+      const { challenges, challengeGroups } = mapGroupsToChallenges(
+        type,
+        data.groups,
+      );
+
+      const words =
+        type === 'vocabulary'
+          ? (data.groups as WordGroup[]).flatMap((g) => g.words)
+          : [];
+      const groups = type === 'vocabulary' ? (data.groups as WordGroup[]) : [];
+
       units.push({
         id,
         title: data.title,
+        type,
         words,
-        groups: data.groups,
+        groups,
+        challenges,
+        challengeGroups,
       });
     }
   }

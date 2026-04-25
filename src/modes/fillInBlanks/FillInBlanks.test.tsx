@@ -6,6 +6,7 @@ import { FillInBlanks } from './FillInBlanks';
 const unit: Unit = {
   id: 'test',
   title: 'Test Unit',
+  type: 'vocabulary',
   words: [
     { en: 'cat', pl: 'kot' },
     { en: 'dog', pl: 'pies' },
@@ -16,6 +17,19 @@ const unit: Unit = {
       words: [
         { en: 'cat', pl: 'kot' },
         { en: 'dog', pl: 'pies' },
+      ],
+    },
+  ],
+  challenges: [
+    { prompt: 'kot', answer: 'cat' },
+    { prompt: 'pies', answer: 'dog' },
+  ],
+  challengeGroups: [
+    {
+      name: 'Animals',
+      items: [
+        { prompt: 'kot', answer: 'cat' },
+        { prompt: 'pies', answer: 'dog' },
       ],
     },
   ],
@@ -118,13 +132,13 @@ describe('FillInBlanks', () => {
     expect(onExit).toHaveBeenCalled();
   });
 
-  it('uses words prop when provided', async () => {
+  it('uses challenges prop when provided', async () => {
     const user = userEvent.setup();
-    const subset = [{ en: 'cat', pl: 'kot' }];
+    const subset = [{ prompt: 'kot', answer: 'cat' }];
     render(
       <FillInBlanks
         unit={unit}
-        words={subset}
+        challenges={subset}
         onComplete={() => {}}
         onExit={() => {}}
       />,

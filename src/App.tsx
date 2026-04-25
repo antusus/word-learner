@@ -4,7 +4,7 @@ import { ModeSelector } from './components/ModeSelector';
 import { UnitSelector } from './components/UnitSelector';
 import { loadUnits } from './data/loader';
 import { type GameMode, getGameModes } from './modes';
-import type { Unit, Word } from './types';
+import type { ChallengeItem, Unit } from './types';
 import './App.css';
 
 const units = loadUnits();
@@ -16,11 +16,13 @@ function App() {
   const [screen, setScreen] = useState<Screen>('units');
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [selectedMode, setSelectedMode] = useState<GameMode | null>(null);
-  const [selectedWords, setSelectedWords] = useState<Word[] | null>(null);
+  const [selectedChallenges, setSelectedChallenges] = useState<
+    ChallengeItem[] | null
+  >(null);
 
   const handleSelectUnit = (unit: Unit) => {
     setSelectedUnit(unit);
-    if (unit.groups.length > 1) {
+    if (unit.challengeGroups.length > 1) {
       setScreen('groups');
     } else if (gameModes.length === 1) {
       setSelectedMode(gameModes[0]);
@@ -30,8 +32,8 @@ function App() {
     }
   };
 
-  const handleSelectGroups = (words: Word[]) => {
-    setSelectedWords(words);
+  const handleSelectGroups = (challenges: ChallengeItem[]) => {
+    setSelectedChallenges(challenges);
     if (gameModes.length === 1) {
       setSelectedMode(gameModes[0]);
       setScreen('quiz');
@@ -48,13 +50,13 @@ function App() {
   const handleBackToUnits = () => {
     setSelectedUnit(null);
     setSelectedMode(null);
-    setSelectedWords(null);
+    setSelectedChallenges(null);
     setScreen('units');
   };
 
   const handleBackFromGroups = () => {
     setSelectedUnit(null);
-    setSelectedWords(null);
+    setSelectedChallenges(null);
     setScreen('units');
   };
 
@@ -64,7 +66,7 @@ function App() {
       <div className="app">
         <GameComponent
           unit={selectedUnit}
-          words={selectedWords ?? undefined}
+          challenges={selectedChallenges ?? undefined}
           onComplete={() => {}}
           onExit={handleBackToUnits}
         />
@@ -77,7 +79,8 @@ function App() {
       <div className="app">
         <GroupSelector
           unitTitle={selectedUnit.title}
-          groups={selectedUnit.groups}
+          unitType={selectedUnit.type}
+          groups={selectedUnit.challengeGroups}
           onStart={handleSelectGroups}
           onBack={handleBackFromGroups}
         />

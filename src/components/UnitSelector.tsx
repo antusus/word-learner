@@ -19,7 +19,10 @@ export function UnitSelector({ units, onSelect }: UnitSelectorProps) {
               onClick={() => onSelect(unit)}
             >
               <span className="unit-title">{unit.title}</span>
-              <span className="unit-count">{unit.words.length} words</span>
+              <span className="unit-count">
+                {unit.challenges.length}{' '}
+                {unit.type === 'irregular-verbs' ? 'verbs' : 'words'}
+              </span>
             </button>
           </li>
         ))}

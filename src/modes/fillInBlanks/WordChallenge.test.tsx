@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type { Word } from '../../types';
+import type { ChallengeItem } from '../../types';
 import type { CharSlot } from './blanking';
 import { WordChallenge } from './WordChallenge';
 
-const word: Word = { en: 'cat', pl: 'kot' };
+const challenge: ChallengeItem = { prompt: 'kot', answer: 'cat' };
 
 // Blank the middle letter 'a'
 const slots: CharSlot[] = [
@@ -17,7 +17,7 @@ describe('WordChallenge', () => {
   it('always shows the Polish translation', () => {
     render(
       <WordChallenge
-        word={word}
+        challenge={challenge}
         slots={slots}
         userInput={[]}
         onChange={() => {}}
@@ -29,7 +29,7 @@ describe('WordChallenge', () => {
   it('renders revealed letters as text', () => {
     render(
       <WordChallenge
-        word={word}
+        challenge={challenge}
         slots={slots}
         userInput={[]}
         onChange={() => {}}
@@ -42,7 +42,7 @@ describe('WordChallenge', () => {
   it('renders an input for blank slots', () => {
     render(
       <WordChallenge
-        word={word}
+        challenge={challenge}
         slots={slots}
         userInput={[]}
         onChange={() => {}}
@@ -58,7 +58,7 @@ describe('WordChallenge', () => {
     const user = userEvent.setup();
     render(
       <WordChallenge
-        word={word}
+        challenge={challenge}
         slots={slots}
         userInput={[]}
         onChange={onChange}
@@ -77,7 +77,7 @@ describe('WordChallenge', () => {
   it('disables inputs when submitted', () => {
     render(
       <WordChallenge
-        word={word}
+        challenge={challenge}
         slots={slots}
         userInput={[]}
         onChange={() => {}}
@@ -90,7 +90,7 @@ describe('WordChallenge', () => {
   it('auto-focuses the first blank on mount', () => {
     render(
       <WordChallenge
-        word={word}
+        challenge={challenge}
         slots={slots}
         userInput={[]}
         onChange={() => {}}
@@ -111,7 +111,7 @@ describe('WordChallenge', () => {
 
     render(
       <WordChallenge
-        word={word}
+        challenge={challenge}
         slots={twoBlankSlots}
         userInput={[]}
         onChange={onChange}
@@ -133,7 +133,7 @@ describe('WordChallenge', () => {
 
     render(
       <WordChallenge
-        word={word}
+        challenge={challenge}
         slots={slots}
         userInput={[]}
         onChange={() => {}}
@@ -158,7 +158,7 @@ describe('WordChallenge', () => {
 
     render(
       <WordChallenge
-        word={word}
+        challenge={challenge}
         slots={twoBlankSlots}
         userInput={[]}
         onChange={() => {}}

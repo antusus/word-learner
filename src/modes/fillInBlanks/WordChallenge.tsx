@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef } from 'react';
-import type { Word } from '../../types';
+import type { ChallengeItem } from '../../types';
 import type { CharSlot } from './blanking';
 import { Hint } from './Hint';
 
 interface WordChallengeProps {
-  word: Word;
+  challenge: ChallengeItem;
   slots: CharSlot[];
   userInput: string[];
   onChange: (input: string[]) => void;
@@ -28,7 +28,7 @@ function groupSlotsByWord(slots: CharSlot[]): CharSlot[][] {
 }
 
 export function WordChallenge({
-  word,
+  challenge,
   slots,
   userInput,
   onChange,
@@ -105,7 +105,7 @@ export function WordChallenge({
 
   return (
     <div className="fib-challenge">
-      <Hint translation={word.pl} />
+      <Hint translation={challenge.prompt} />
       <div className="fib-word">
         {wordGroups.map((group) => (
           <span key={group[0].index} className="fib-word-group">

@@ -1,11 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type { Unit, Word } from '../types';
+import type { ChallengeItem, Unit } from '../types';
 import { Quiz } from './Quiz';
 
 const mockUnit: Unit = {
   id: 'Unit1',
   title: 'Unit 1 - Animals',
+  type: 'vocabulary',
   words: [
     { en: 'cat', pl: 'kot' },
     { en: 'dog', pl: 'pies' },
@@ -21,40 +22,55 @@ const mockUnit: Unit = {
       ],
     },
   ],
+  challenges: [
+    { prompt: 'kot', answer: 'cat' },
+    { prompt: 'pies', answer: 'dog' },
+    { prompt: 'ptak', answer: 'bird' },
+  ],
+  challengeGroups: [
+    {
+      name: 'Animals',
+      items: [
+        { prompt: 'kot', answer: 'cat' },
+        { prompt: 'pies', answer: 'dog' },
+        { prompt: 'ptak', answer: 'bird' },
+      ],
+    },
+  ],
 };
 
 const scenarios: {
   label: string;
-  words: Word[] | undefined;
-  expectedWords: Word[];
+  challenges: ChallengeItem[] | undefined;
+  expectedChallenges: ChallengeItem[];
 }[] = [
   {
-    label: 'with unit words (no words prop)',
-    words: undefined,
-    expectedWords: mockUnit.words,
+    label: 'with unit challenges (no challenges prop)',
+    challenges: undefined,
+    expectedChallenges: mockUnit.challenges,
   },
   {
-    label: 'with explicit words prop',
-    words: [
-      { en: 'red', pl: 'czerwony' },
-      { en: 'blue', pl: 'niebieski' },
+    label: 'with explicit challenges prop',
+    challenges: [
+      { prompt: 'czerwony', answer: 'red' },
+      { prompt: 'niebieski', answer: 'blue' },
     ],
-    expectedWords: [
-      { en: 'red', pl: 'czerwony' },
-      { en: 'blue', pl: 'niebieski' },
+    expectedChallenges: [
+      { prompt: 'czerwony', answer: 'red' },
+      { prompt: 'niebieski', answer: 'blue' },
     ],
   },
 ];
 
 describe('Quiz', () => {
-  describe.each(scenarios)('$label', ({ words, expectedWords }) => {
-    const totalWords = expectedWords.length;
+  describe.each(scenarios)('$label', ({ challenges, expectedChallenges }) => {
+    const totalWords = expectedChallenges.length;
 
     it('renders the unit title', () => {
       render(
         <Quiz
           unit={mockUnit}
-          words={words}
+          challenges={challenges}
           onComplete={() => {}}
           onExit={() => {}}
         />,
@@ -68,7 +84,7 @@ describe('Quiz', () => {
       render(
         <Quiz
           unit={mockUnit}
-          words={words}
+          challenges={challenges}
           onComplete={() => {}}
           onExit={() => {}}
         />,
@@ -78,25 +94,25 @@ describe('Quiz', () => {
       ).toBeInTheDocument();
     });
 
-    it('shows a flashcard with a Polish word', () => {
+    it('shows a flashcard with a prompt', () => {
       render(
         <Quiz
           unit={mockUnit}
-          words={words}
+          challenges={challenges}
           onComplete={() => {}}
           onExit={() => {}}
         />,
       );
-      const polishWords = expectedWords.map((w) => w.pl);
-      const foundWord = polishWords.some((word) => screen.queryByText(word));
-      expect(foundWord).toBe(true);
+      const prompts = expectedChallenges.map((c) => c.prompt);
+      const foundPrompt = prompts.some((p) => screen.queryByText(p));
+      expect(foundPrompt).toBe(true);
     });
 
     it('next button is disabled until card is flipped', () => {
       render(
         <Quiz
           unit={mockUnit}
-          words={words}
+          challenges={challenges}
           onComplete={() => {}}
           onExit={() => {}}
         />,
@@ -110,7 +126,7 @@ describe('Quiz', () => {
       render(
         <Quiz
           unit={mockUnit}
-          words={words}
+          challenges={challenges}
           onComplete={() => {}}
           onExit={() => {}}
         />,
@@ -130,7 +146,7 @@ describe('Quiz', () => {
       render(
         <Quiz
           unit={mockUnit}
-          words={words}
+          challenges={challenges}
           onComplete={() => {}}
           onExit={() => {}}
         />,
@@ -155,7 +171,7 @@ describe('Quiz', () => {
       render(
         <Quiz
           unit={mockUnit}
-          words={words}
+          challenges={challenges}
           onComplete={() => {}}
           onExit={onExit}
         />,
@@ -171,7 +187,7 @@ describe('Quiz', () => {
       render(
         <Quiz
           unit={mockUnit}
-          words={words}
+          challenges={challenges}
           onComplete={onComplete}
           onExit={() => {}}
         />,
@@ -204,7 +220,7 @@ describe('Quiz', () => {
       render(
         <Quiz
           unit={mockUnit}
-          words={words}
+          challenges={challenges}
           onComplete={() => {}}
           onExit={onExit}
         />,

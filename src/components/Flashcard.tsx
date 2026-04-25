@@ -1,13 +1,13 @@
-import type { Word } from '../types';
+import type { ChallengeItem } from '../types';
 import './Flashcard.css';
 
 interface FlashcardProps {
-  word: Word;
+  challenge: ChallengeItem;
   isFlipped: boolean;
   onFlip: () => void;
 }
 
-export function Flashcard({ word, isFlipped, onFlip }: FlashcardProps) {
+export function Flashcard({ challenge, isFlipped, onFlip }: FlashcardProps) {
   return (
     <button
       type="button"
@@ -16,11 +16,11 @@ export function Flashcard({ word, isFlipped, onFlip }: FlashcardProps) {
     >
       <div className="flashcard-inner">
         <div className="flashcard-front">
-          <span className="flashcard-text">{word.pl}</span>
+          <span className="flashcard-text">{challenge.prompt}</span>
           <span className="flashcard-hint">Click to reveal</span>
         </div>
         <div className="flashcard-back">
-          <span className="flashcard-text">{word.en}</span>
+          <span className="flashcard-text">{challenge.answer}</span>
         </div>
       </div>
     </button>

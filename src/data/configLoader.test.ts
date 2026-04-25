@@ -1,5 +1,9 @@
 import type { DifficultyConfig } from '../types';
-import { loadDifficultyLevels, validateDifficultyConfig } from './configLoader';
+import {
+  loadDifficultyLevels,
+  loadDifficultyLevelsForType,
+  validateDifficultyConfig,
+} from './configLoader';
 
 describe('validateDifficultyConfig', () => {
   const validConfig: DifficultyConfig = {
@@ -28,17 +32,27 @@ describe('validateDifficultyConfig', () => {
           { id: 'zero', name: 'Z', description: '', blankPercentage: 0 },
         ],
       }),
-    ).toThrow('must be > 0 and < 1');
+    ).toThrow('must be > 0 and <= 1');
   });
 
-  it('throws when blankPercentage is 1', () => {
+  it('accepts blankPercentage of exactly 1', () => {
+    const result = validateDifficultyConfig({
+      difficulties: [
+        { id: 'full', name: 'F', description: '', blankPercentage: 1 },
+      ],
+    });
+    expect(result).toHaveLength(1);
+    expect(result[0].blankPercentage).toBe(1);
+  });
+
+  it('throws when blankPercentage exceeds 1', () => {
     expect(() =>
       validateDifficultyConfig({
         difficulties: [
-          { id: 'full', name: 'F', description: '', blankPercentage: 1 },
+          { id: 'over', name: 'O', description: '', blankPercentage: 1.5 },
         ],
       }),
-    ).toThrow('must be > 0 and < 1');
+    ).toThrow('must be > 0 and <= 1');
   });
 
   it('throws when blankPercentage is negative', () => {
@@ -48,7 +62,7 @@ describe('validateDifficultyConfig', () => {
           { id: 'neg', name: 'N', description: '', blankPercentage: -0.5 },
         ],
       }),
-    ).toThrow('must be > 0 and < 1');
+    ).toThrow('must be > 0 and <= 1');
   });
 
   it('throws on duplicate ids', () => {
@@ -69,7 +83,27 @@ describe('loadDifficultyLevels', () => {
     expect(levels.length).toBeGreaterThanOrEqual(1);
     for (const level of levels) {
       expect(level.blankPercentage).toBeGreaterThan(0);
-      expect(level.blankPercentage).toBeLessThan(1);
+      expect(level.blankPercentage).toBeLessThanOrEqual(1);
+    }
+  });
+});
+
+describe('loadDifficultyLevelsForType', () => {
+  it('loads vocabulary config for vocabulary type', () => {
+    const levels = loadDifficultyLevelsForType('vocabulary');
+    expect(levels.length).toBeGreaterThanOrEqual(1);
+    for (const level of levels) {
+      expect(level.blankPercentage).toBeGreaterThan(0);
+      expect(level.blankPercentage).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it('loads irregular-verbs config for irregular-verbs type', () => {
+    const levels = loadDifficultyLevelsForType('irregular-verbs');
+    expect(levels.length).toBeGreaterThanOrEqual(1);
+    for (const level of levels) {
+      expect(level.blankPercentage).toBeGreaterThan(0);
+      expect(level.blankPercentage).toBeLessThanOrEqual(1);
     }
   });
 });

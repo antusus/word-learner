@@ -1,9 +1,9 @@
 import type { ComponentType } from 'react';
-import type { Unit, Word } from '../types';
+import type { ChallengeItem, Unit } from '../types';
 
 export interface GameModeProps {
   unit: Unit;
-  words?: Word[];
+  challenges?: ChallengeItem[];
   onComplete: () => void;
   onExit: () => void;
 }
@@ -22,13 +22,13 @@ export const gameModes: GameMode[] = [
   {
     id: 'flashcard',
     name: 'Flip Cards',
-    description: 'Show Polish, reveal English',
+    description: 'Show prompt, reveal answer',
     component: Quiz,
   },
   {
     id: 'fill-in-blanks',
     name: 'Fill in Blanks',
-    description: 'Fill missing letters in English words',
+    description: 'Fill missing letters',
     component: FillInBlanks,
   },
 ];
