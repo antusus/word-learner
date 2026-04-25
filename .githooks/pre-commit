@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Verify yarn.lock contains only public registry URLs
+
+if git diff --cached --name-only | grep -q "yarn.lock"; then
+  echo "Checking yarn.lock for non-public registries..."
+
+  if grep -E 'resolved "https?://' yarn.lock | grep -v 'https://registry.npmjs.org' | grep -v 'https://registry.yarnpkg.com'; then
+    echo ""
+    echo "ERROR: yarn.lock contains references to non-public registries!"
+    echo "Found registry URLs other than registry.npmjs.org or registry.yarnpkg.com"
+    echo ""
+    echo "Please regenerate yarn.lock using public registries:"
+    echo "  rm -rf node_modules yarn.lock"
+    echo "  yarn install"
+    exit 1
+  fi
+
+  echo "✓ yarn.lock registry check passed"
+fi
+
+exit 0
