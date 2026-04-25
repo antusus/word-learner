@@ -1,0 +1,20 @@
+{
+  "title": "Irregular Verbs",
+  "type": "irregular-verbs",
+  "groups": [
+    {
+      "name": "Unit 7",
+      "words": [
+        { "base": "buy", "pastSimple": "bought" },
+        { "base": "catch", "pastSimple": "caught" },
+        { "base": "come", "pastSimple": "came" },
+        { "base": "do", "pastSimple": "did" },
+        { "base": "get", "pastSimple": "got" },
+        { "base": "have", "pastSimple": "had" },
+        { "base": "meet", "pastSimple": "met" },
+        { "base": "see", "pastSimple": "saw" },
+        { "base": "ride", "pastSimple": "rode" }
+      ]
+    }
+  ]
+}
