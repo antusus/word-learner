@@ -1,25 +1,29 @@
 import { useMemo, useState } from 'react';
-import type { Unit, Word } from '../types';
+import type { ChallengeItem, Unit } from '../types';
 import { shuffleArray } from '../utils/shuffle';
 import { Flashcard } from './Flashcard';
 import './Quiz.css';
 
 interface QuizProps {
   unit: Unit;
-  words?: Word[];
+  challenges?: ChallengeItem[];
   onComplete: () => void;
   onExit: () => void;
 }
 
-export function Quiz({ unit, words, onComplete, onExit }: QuizProps) {
-  const wordList = words ?? unit.words;
-  const shuffledWords = useMemo(() => shuffleArray(wordList), [wordList]);
+export function Quiz({ unit, challenges, onComplete, onExit }: QuizProps) {
+  const challengeList = challenges ?? unit.challenges;
+  const shuffledChallenges = useMemo(
+    () => shuffleArray(challengeList),
+    [challengeList],
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
 
-  const currentWord: Word | undefined = shuffledWords[currentIndex];
-  const totalWords = shuffledWords.length;
+  const currentChallenge: ChallengeItem | undefined =
+    shuffledChallenges[currentIndex];
+  const totalWords = shuffledChallenges.length;
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
@@ -61,9 +65,9 @@ export function Quiz({ unit, words, onComplete, onExit }: QuizProps) {
 
       <h2 className="quiz-title">{unit.title}</h2>
 
-      {currentWord && (
+      {currentChallenge && (
         <Flashcard
-          word={currentWord}
+          challenge={currentChallenge}
           isFlipped={isFlipped}
           onFlip={handleFlip}
         />

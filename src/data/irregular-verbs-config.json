@@ -1,0 +1,22 @@
+{
+  "difficulties": [
+    {
+      "id": "easy",
+      "name": "Easy",
+      "description": "40% of letters hidden",
+      "blankPercentage": 0.4
+    },
+    {
+      "id": "medium",
+      "name": "Medium",
+      "description": "70% of letters hidden",
+      "blankPercentage": 0.7
+    },
+    {
+      "id": "hard",
+      "name": "Hard",
+      "description": "All letters hidden",
+      "blankPercentage": 1.0
+    }
+  ]
+}

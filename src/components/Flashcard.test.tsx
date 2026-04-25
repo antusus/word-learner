@@ -1,28 +1,42 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type { Word } from '../types';
+import type { ChallengeItem } from '../types';
 import { Flashcard } from './Flashcard';
 
-const mockWord: Word = {
-  en: 'cat',
-  pl: 'kot',
+const mockChallenge: ChallengeItem = {
+  prompt: 'kot',
+  answer: 'cat',
 };
 
 describe('Flashcard', () => {
-  it('renders Polish word when not flipped', () => {
-    render(<Flashcard word={mockWord} isFlipped={false} onFlip={() => {}} />);
+  it('renders prompt when not flipped', () => {
+    render(
+      <Flashcard
+        challenge={mockChallenge}
+        isFlipped={false}
+        onFlip={() => {}}
+      />,
+    );
     expect(screen.getByText('kot')).toBeInTheDocument();
   });
 
-  it('renders English word (visible when flipped)', () => {
-    render(<Flashcard word={mockWord} isFlipped={true} onFlip={() => {}} />);
+  it('renders answer (visible when flipped)', () => {
+    render(
+      <Flashcard
+        challenge={mockChallenge}
+        isFlipped={true}
+        onFlip={() => {}}
+      />,
+    );
     expect(screen.getByText('cat')).toBeInTheDocument();
   });
 
   it('calls onFlip when clicked', async () => {
     const user = userEvent.setup();
     const onFlip = vi.fn();
-    render(<Flashcard word={mockWord} isFlipped={false} onFlip={onFlip} />);
+    render(
+      <Flashcard challenge={mockChallenge} isFlipped={false} onFlip={onFlip} />,
+    );
 
     await user.click(screen.getByRole('button'));
     expect(onFlip).toHaveBeenCalledTimes(1);
@@ -31,7 +45,9 @@ describe('Flashcard', () => {
   it('calls onFlip when Enter key is pressed', async () => {
     const user = userEvent.setup();
     const onFlip = vi.fn();
-    render(<Flashcard word={mockWord} isFlipped={false} onFlip={onFlip} />);
+    render(
+      <Flashcard challenge={mockChallenge} isFlipped={false} onFlip={onFlip} />,
+    );
 
     const card = screen.getByRole('button');
     card.focus();
@@ -42,7 +58,9 @@ describe('Flashcard', () => {
   it('calls onFlip when Space key is pressed', async () => {
     const user = userEvent.setup();
     const onFlip = vi.fn();
-    render(<Flashcard word={mockWord} isFlipped={false} onFlip={onFlip} />);
+    render(
+      <Flashcard challenge={mockChallenge} isFlipped={false} onFlip={onFlip} />,
+    );
 
     const card = screen.getByRole('button');
     card.focus();
@@ -52,14 +70,22 @@ describe('Flashcard', () => {
 
   it('applies flipped class when isFlipped is true', () => {
     const { container } = render(
-      <Flashcard word={mockWord} isFlipped={true} onFlip={() => {}} />,
+      <Flashcard
+        challenge={mockChallenge}
+        isFlipped={true}
+        onFlip={() => {}}
+      />,
     );
     expect(container.querySelector('.flashcard.flipped')).toBeInTheDocument();
   });
 
   it('does not have flipped class when isFlipped is false', () => {
     const { container } = render(
-      <Flashcard word={mockWord} isFlipped={false} onFlip={() => {}} />,
+      <Flashcard
+        challenge={mockChallenge}
+        isFlipped={false}
+        onFlip={() => {}}
+      />,
     );
     expect(
       container.querySelector('.flashcard.flipped'),

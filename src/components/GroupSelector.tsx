@@ -1,16 +1,18 @@
 import { useState } from 'react';
-import type { Word, WordGroup } from '../types';
+import type { ChallengeGroup, ChallengeItem, UnitType } from '../types';
 import './GroupSelector.css';
 
 interface GroupSelectorProps {
   unitTitle: string;
-  groups: WordGroup[];
-  onStart: (words: Word[]) => void;
+  unitType: UnitType;
+  groups: ChallengeGroup[];
+  onStart: (challenges: ChallengeItem[]) => void;
   onBack: () => void;
 }
 
 export function GroupSelector({
   unitTitle,
+  unitType,
   groups,
   onStart,
   onBack,
@@ -32,10 +34,10 @@ export function GroupSelector({
   };
 
   const handleStart = () => {
-    const words = groups
+    const items = groups
       .filter((_, index) => selectedIndices.has(index))
-      .flatMap((group) => group.words);
-    onStart(words);
+      .flatMap((group) => group.items);
+    onStart(items);
   };
 
   return (
@@ -56,8 +58,14 @@ export function GroupSelector({
               />
               <span className="group-name">{group.name}</span>
               <span className="group-count">
-                {group.words.length}{' '}
-                {group.words.length === 1 ? 'word' : 'words'}
+                {group.items.length}{' '}
+                {unitType === 'irregular-verbs'
+                  ? group.items.length === 1
+                    ? 'verb'
+                    : 'verbs'
+                  : group.items.length === 1
+                    ? 'word'
+                    : 'words'}
               </span>
             </label>
           </li>

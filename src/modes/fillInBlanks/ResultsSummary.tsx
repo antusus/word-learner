@@ -1,7 +1,7 @@
-import type { Word } from '../../types';
+import type { ChallengeItem } from '../../types';
 
 export interface WordResult {
-  word: Word;
+  challenge: ChallengeItem;
   userAnswer: string[];
   correct: boolean;
 }
@@ -39,20 +39,20 @@ export function ResultsSummary({
           </p>
           <ul className="fib-error-list">
             {errors.map((r) => (
-              <li key={r.word.en} className="fib-error-item">
-                <span className="fib-error-polish">{r.word.pl}</span>
+              <li key={r.challenge.answer} className="fib-error-item">
+                <span className="fib-error-polish">{r.challenge.prompt}</span>
                 <div className="fib-error-cards">
                   <div className="fib-error-card">
                     <span className="fib-error-card-label">You typed</span>
                     <div className="fib-error-letters">
-                      {r.word.en.split('').map((char, i) => {
+                      {r.challenge.answer.split('').map((char, i) => {
                         const userChar = r.userAnswer[i] ?? ' ';
                         const isCorrect =
                           userChar.toLowerCase() === char.toLowerCase();
                         return (
                           <span
                             // biome-ignore lint/suspicious/noArrayIndexKey: characters are static positional data — index is the correct key
-                            key={`${r.word.en}-user-${i}`}
+                            key={`${r.challenge.answer}-user-${i}`}
                             className={
                               isCorrect
                                 ? 'fib-letter-correct'
@@ -68,10 +68,10 @@ export function ResultsSummary({
                   <div className="fib-error-card">
                     <span className="fib-error-card-label">Correct</span>
                     <div className="fib-error-letters">
-                      {r.word.en.split('').map((char, i) => (
+                      {r.challenge.answer.split('').map((char, i) => (
                         <span
                           // biome-ignore lint/suspicious/noArrayIndexKey: characters are static positional data — index is the correct key
-                          key={`${r.word.en}-correct-${i}`}
+                          key={`${r.challenge.answer}-correct-${i}`}
                           className="fib-letter-correct"
                         >
                           {char}

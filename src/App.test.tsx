@@ -8,6 +8,7 @@ vi.mock('./data/loader', () => ({
     {
       id: 'Unit1',
       title: 'Unit 1 - Test Unit',
+      type: 'vocabulary',
       words: [
         { en: 'cat', pl: 'kot' },
         { en: 'dog', pl: 'pies' },
@@ -24,6 +25,24 @@ vi.mock('./data/loader', () => ({
         {
           name: 'Colors',
           words: [{ en: 'red', pl: 'czerwony' }],
+        },
+      ],
+      challenges: [
+        { prompt: 'kot', answer: 'cat' },
+        { prompt: 'pies', answer: 'dog' },
+        { prompt: 'czerwony', answer: 'red' },
+      ],
+      challengeGroups: [
+        {
+          name: 'Animals',
+          items: [
+            { prompt: 'kot', answer: 'cat' },
+            { prompt: 'pies', answer: 'dog' },
+          ],
+        },
+        {
+          name: 'Colors',
+          items: [{ prompt: 'czerwony', answer: 'red' }],
         },
       ],
     },

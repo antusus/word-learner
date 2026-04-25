@@ -7,6 +7,7 @@ const mockUnits: Unit[] = [
   {
     id: 'Unit1',
     title: 'Unit 1 - Animals',
+    type: 'vocabulary',
     words: [
       { en: 'cat', pl: 'kot' },
       { en: 'dog', pl: 'pies' },
@@ -20,10 +21,24 @@ const mockUnits: Unit[] = [
         ],
       },
     ],
+    challenges: [
+      { prompt: 'kot', answer: 'cat' },
+      { prompt: 'pies', answer: 'dog' },
+    ],
+    challengeGroups: [
+      {
+        name: 'Animals',
+        items: [
+          { prompt: 'kot', answer: 'cat' },
+          { prompt: 'pies', answer: 'dog' },
+        ],
+      },
+    ],
   },
   {
     id: 'Unit2',
     title: 'Unit 2 - Colors',
+    type: 'vocabulary',
     words: [
       { en: 'red', pl: 'czerwony' },
       { en: 'blue', pl: 'niebieski' },
@@ -36,6 +51,21 @@ const mockUnits: Unit[] = [
           { en: 'red', pl: 'czerwony' },
           { en: 'blue', pl: 'niebieski' },
           { en: 'green', pl: 'zielony' },
+        ],
+      },
+    ],
+    challenges: [
+      { prompt: 'czerwony', answer: 'red' },
+      { prompt: 'niebieski', answer: 'blue' },
+      { prompt: 'zielony', answer: 'green' },
+    ],
+    challengeGroups: [
+      {
+        name: 'Colors',
+        items: [
+          { prompt: 'czerwony', answer: 'red' },
+          { prompt: 'niebieski', answer: 'blue' },
+          { prompt: 'zielony', answer: 'green' },
         ],
       },
     ],

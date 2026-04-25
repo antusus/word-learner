@@ -9,13 +9,13 @@ const mockModes: GameMode[] = [
   {
     id: 'flashcard',
     name: 'Flip Cards',
-    description: 'Show Polish, reveal English',
+    description: 'Show prompt, reveal answer',
     component: MockComponent,
   },
   {
     id: 'fillblank',
     name: 'Fill in Blanks',
-    description: 'Type the translation',
+    description: 'Fill missing letters',
     component: MockComponent,
   },
 ];
@@ -42,8 +42,8 @@ describe('ModeSelector', () => {
     render(
       <ModeSelector modes={mockModes} onSelect={() => {}} onBack={() => {}} />,
     );
-    expect(screen.getByText('Show Polish, reveal English')).toBeInTheDocument();
-    expect(screen.getByText('Type the translation')).toBeInTheDocument();
+    expect(screen.getByText('Show prompt, reveal answer')).toBeInTheDocument();
+    expect(screen.getByText('Fill missing letters')).toBeInTheDocument();
   });
 
   it('calls onSelect with the mode when clicked', async () => {

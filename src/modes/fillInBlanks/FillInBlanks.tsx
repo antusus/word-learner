@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import { loadDifficultyLevels } from '../../data/configLoader';
-import type { DifficultyLevel, Word } from '../../types';
+import { loadDifficultyLevelsForType } from '../../data/configLoader';
+import type { ChallengeItem, DifficultyLevel, Unit } from '../../types';
 import { shuffleArray } from '../../utils/shuffle';
 import { generateBlanks } from './blanking';
 import { DifficultyPicker } from './DifficultyPicker';
@@ -10,24 +10,31 @@ import { WordChallenge } from './WordChallenge';
 import './FillInBlanks.css';
 
 interface FillInBlanksProps {
-  unit: { title: string; words: Word[] };
-  words?: Word[];
+  unit: Unit;
+  challenges?: ChallengeItem[];
   onComplete: () => void;
   onExit: () => void;
 }
 
 type Phase = 'difficulty' | 'playing' | 'results';
 
-const difficulties = loadDifficultyLevels();
-
 export function FillInBlanks({
   unit,
-  words,
+  challenges,
   onComplete,
   onExit,
 }: FillInBlanksProps) {
-  const wordList = words ?? unit.words;
-  const shuffledWords = useMemo(() => shuffleArray(wordList), [wordList]);
+  const challengeList = challenges ?? unit.challenges;
+  const shuffledChallenges = useMemo(
+    () => shuffleArray(challengeList),
+    [challengeList],
+  );
+
+  const difficulties = useMemo(
+    () => loadDifficultyLevelsForType(unit.type),
+    [unit.type],
+  );
+  const allowFullBlank = unit.type === 'irregular-verbs';
 
   const [phase, setPhase] = useState<Phase>('difficulty');
   const [difficulty, setDifficulty] = useState<DifficultyLevel | null>(null);
@@ -37,14 +44,14 @@ export function FillInBlanks({
 
   const allSlots = useMemo(() => {
     if (!difficulty) return [];
-    return shuffledWords.map((w) =>
-      generateBlanks(w.en, difficulty.blankPercentage),
+    return shuffledChallenges.map((c) =>
+      generateBlanks(c.answer, difficulty.blankPercentage, allowFullBlank),
     );
-  }, [shuffledWords, difficulty]);
+  }, [shuffledChallenges, difficulty, allowFullBlank]);
 
-  const currentWord = shuffledWords[currentIndex];
+  const currentChallenge = shuffledChallenges[currentIndex];
   const currentSlots = allSlots[currentIndex];
-  const totalWords = shuffledWords.length;
+  const totalWords = shuffledChallenges.length;
 
   const handleSelectDifficulty = (d: DifficultyLevel) => {
     setDifficulty(d);
@@ -52,15 +59,19 @@ export function FillInBlanks({
   };
 
   const handleNext = () => {
-    const word = shuffledWords[currentIndex];
+    const challenge = shuffledChallenges[currentIndex];
     const slots = allSlots[currentIndex];
 
     const fullAnswer = slots.map((s) =>
       s.isBlank ? (userInput[s.index] ?? '') : s.char,
     );
-    const correct = fullAnswer.join('').toLowerCase() === word.en.toLowerCase();
+    const correct =
+      fullAnswer.join('').toLowerCase() === challenge.answer.toLowerCase();
 
-    const newResults = [...results, { word, userAnswer: fullAnswer, correct }];
+    const newResults = [
+      ...results,
+      { challenge, userAnswer: fullAnswer, correct },
+    ];
     setResults(newResults);
 
     if (currentIndex < totalWords - 1) {
@@ -114,9 +125,9 @@ export function FillInBlanks({
 
       <h2 className="fib-title">{unit.title}</h2>
 
-      {currentWord && currentSlots && (
+      {currentChallenge && currentSlots && (
         <WordChallenge
-          word={currentWord}
+          challenge={currentChallenge}
           slots={currentSlots}
           userInput={userInput}
           onChange={setUserInput}

@@ -62,4 +62,22 @@ describe('generateBlanks', () => {
     expect(slots[1].char).toBe('i');
     expect(slots[1].index).toBe(1);
   });
+
+  it('blanks all letters when allowFullBlank is true and blankPercentage is 1.0', () => {
+    const slots = generateBlanks('hello', 1.0, true);
+    const blanks = slots.filter((s) => s.isBlank);
+    expect(blanks).toHaveLength(5);
+  });
+
+  it('still clamps to letterCount-1 when allowFullBlank is true but blankPercentage < 1', () => {
+    const slots = generateBlanks('ab', 0.99, true);
+    const revealed = slots.filter((s) => !s.isBlank && /[a-zA-Z]/.test(s.char));
+    expect(revealed.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('reveals at least 1 letter when allowFullBlank is false even with blankPercentage 1.0', () => {
+    const slots = generateBlanks('hello', 1.0, false);
+    const revealed = slots.filter((s) => !s.isBlank && /[a-zA-Z]/.test(s.char));
+    expect(revealed.length).toBeGreaterThanOrEqual(1);
+  });
 });

@@ -7,7 +7,7 @@ describe('ResultsSummary', () => {
   it('shows success message when all correct', () => {
     const results: WordResult[] = [
       {
-        word: { en: 'cat', pl: 'kot' },
+        challenge: { prompt: 'kot', answer: 'cat' },
         userAnswer: ['c', 'a', 't'],
         correct: true,
       },
@@ -27,12 +27,12 @@ describe('ResultsSummary', () => {
   it('shows score and error list when there are mistakes', () => {
     const results: WordResult[] = [
       {
-        word: { en: 'cat', pl: 'kot' },
+        challenge: { prompt: 'kot', answer: 'cat' },
         userAnswer: ['c', 'a', 't'],
         correct: true,
       },
       {
-        word: { en: 'dog', pl: 'pies' },
+        challenge: { prompt: 'pies', answer: 'dog' },
         userAnswer: ['d', 'a', 'g'],
         correct: false,
       },
@@ -51,7 +51,11 @@ describe('ResultsSummary', () => {
 
   it('highlights correct letters in green and wrong in red', () => {
     const results: WordResult[] = [
-      { word: { en: 'ab', pl: 'x' }, userAnswer: ['a', 'z'], correct: false },
+      {
+        challenge: { prompt: 'x', answer: 'ab' },
+        userAnswer: ['a', 'z'],
+        correct: false,
+      },
     ];
     render(
       <ResultsSummary
@@ -76,7 +80,11 @@ describe('ResultsSummary', () => {
 
   it("shows 'You typed' and 'Correct' labels for wrong entries", () => {
     const results: WordResult[] = [
-      { word: { en: 'ab', pl: 'x' }, userAnswer: ['a', 'z'], correct: false },
+      {
+        challenge: { prompt: 'x', answer: 'ab' },
+        userAnswer: ['a', 'z'],
+        correct: false,
+      },
     ];
     render(
       <ResultsSummary
@@ -109,12 +117,12 @@ describe('ResultsSummary', () => {
   it('pluralizes word count correctly', () => {
     const results: WordResult[] = [
       {
-        word: { en: 'cat', pl: 'kot' },
+        challenge: { prompt: 'kot', answer: 'cat' },
         userAnswer: ['c', 'a', 't'],
         correct: true,
       },
       {
-        word: { en: 'dog', pl: 'pies' },
+        challenge: { prompt: 'pies', answer: 'dog' },
         userAnswer: ['d', 'o', 'g'],
         correct: true,
       },
