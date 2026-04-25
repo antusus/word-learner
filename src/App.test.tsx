@@ -1,50 +1,53 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
-import type { Unit } from './types';
+import type { UnitEntry } from './types';
 
 vi.mock('./data/loader', () => ({
-  loadUnits: (): Unit[] => [
+  loadUnitEntries: (): UnitEntry[] => [
     {
-      id: 'Unit1',
-      title: 'Unit 1 - Test Unit',
-      type: 'vocabulary',
-      words: [
-        { en: 'cat', pl: 'kot' },
-        { en: 'dog', pl: 'pies' },
-        { en: 'red', pl: 'czerwony' },
-      ],
-      groups: [
-        {
-          name: 'Animals',
-          words: [
-            { en: 'cat', pl: 'kot' },
-            { en: 'dog', pl: 'pies' },
-          ],
-        },
-        {
-          name: 'Colors',
-          words: [{ en: 'red', pl: 'czerwony' }],
-        },
-      ],
-      challenges: [
-        { prompt: 'kot', answer: 'cat' },
-        { prompt: 'pies', answer: 'dog' },
-        { prompt: 'czerwony', answer: 'red' },
-      ],
-      challengeGroups: [
-        {
-          name: 'Animals',
-          items: [
-            { prompt: 'kot', answer: 'cat' },
-            { prompt: 'pies', answer: 'dog' },
-          ],
-        },
-        {
-          name: 'Colors',
-          items: [{ prompt: 'czerwony', answer: 'red' }],
-        },
-      ],
+      kind: 'standalone',
+      unit: {
+        id: 'Unit1',
+        title: 'Unit 1 - Test Unit',
+        type: 'vocabulary',
+        words: [
+          { en: 'cat', pl: 'kot' },
+          { en: 'dog', pl: 'pies' },
+          { en: 'red', pl: 'czerwony' },
+        ],
+        groups: [
+          {
+            name: 'Animals',
+            words: [
+              { en: 'cat', pl: 'kot' },
+              { en: 'dog', pl: 'pies' },
+            ],
+          },
+          {
+            name: 'Colors',
+            words: [{ en: 'red', pl: 'czerwony' }],
+          },
+        ],
+        challenges: [
+          { prompt: 'kot', answer: 'cat' },
+          { prompt: 'pies', answer: 'dog' },
+          { prompt: 'czerwony', answer: 'red' },
+        ],
+        challengeGroups: [
+          {
+            name: 'Animals',
+            items: [
+              { prompt: 'kot', answer: 'cat' },
+              { prompt: 'pies', answer: 'dog' },
+            ],
+          },
+          {
+            name: 'Colors',
+            items: [{ prompt: 'czerwony', answer: 'red' }],
+          },
+        ],
+      },
     },
   ],
 }));

@@ -1,5 +1,5 @@
 import type { WordsFile } from '../types';
-import { parseUnits } from './loader';
+import { parseUnitEntries, parseUnits } from './loader';
 
 const fixtureModules: Record<string, WordsFile> = {
   './UnitA/words.json': {
@@ -239,5 +239,100 @@ describe('parseUnits', () => {
         items: [{ prompt: 'run', answer: 'ran' }],
       });
     });
+  });
+});
+
+describe('parseUnitEntries', () => {
+  it('wraps unbundled units as standalone entries', () => {
+    const entries = parseUnitEntries(fixtureModules);
+    expect(entries.every((e) => e.kind === 'standalone')).toBe(true);
+    expect(entries).toHaveLength(3);
+  });
+
+  it('groups units with same bundle into a UnitBundle', () => {
+    const modules: Record<string, WordsFile> = {
+      './Unit7/words.json': {
+        title: 'Vocabulary',
+        bundle: 'Unit 7',
+        groups: [{ name: 'G', words: [{ en: 'a', pl: 'b' }] }],
+      },
+      './IrregularVerbs/words.json': {
+        title: 'Irregular Verbs',
+        type: 'irregular-verbs',
+        bundle: 'Unit 7',
+        groups: [{ name: 'V', words: [{ base: 'go', pastSimple: 'went' }] }],
+      },
+    };
+    const entries = parseUnitEntries(modules);
+    expect(entries).toHaveLength(1);
+    expect(entries[0].kind).toBe('bundle');
+    if (entries[0].kind === 'bundle') {
+      expect(entries[0].title).toBe('Unit 7');
+      expect(entries[0].subUnits).toHaveLength(2);
+      expect(entries[0].totalChallenges).toBe(2);
+    }
+  });
+
+  it('handles mix of standalone and bundled units', () => {
+    const modules: Record<string, WordsFile> = {
+      './Unit5/words.json': {
+        title: 'Unit 5',
+        groups: [{ name: 'G', words: [{ en: 'x', pl: 'y' }] }],
+      },
+      './Unit7/words.json': {
+        title: 'Vocabulary',
+        bundle: 'Unit 7',
+        groups: [{ name: 'G', words: [{ en: 'a', pl: 'b' }] }],
+      },
+      './IV/words.json': {
+        title: 'Irregular Verbs',
+        type: 'irregular-verbs',
+        bundle: 'Unit 7',
+        groups: [{ name: 'V', words: [{ base: 'go', pastSimple: 'went' }] }],
+      },
+    };
+    const entries = parseUnitEntries(modules);
+    expect(entries).toHaveLength(2);
+    const kinds = entries.map((e) => e.kind);
+    expect(kinds).toContain('standalone');
+    expect(kinds).toContain('bundle');
+  });
+
+  it('sorts entries by title with numeric ordering', () => {
+    const modules: Record<string, WordsFile> = {
+      './Unit10/words.json': {
+        title: 'Unit 10',
+        groups: [{ name: 'G', words: [{ en: 'a', pl: 'b' }] }],
+      },
+      './Unit7V/words.json': {
+        title: 'Vocabulary',
+        bundle: 'Unit 7',
+        groups: [{ name: 'G', words: [{ en: 'c', pl: 'd' }] }],
+      },
+      './Unit2/words.json': {
+        title: 'Unit 2',
+        groups: [{ name: 'G', words: [{ en: 'e', pl: 'f' }] }],
+      },
+    };
+    const entries = parseUnitEntries(modules);
+    const titles = entries.map((e) =>
+      e.kind === 'bundle' ? e.title : e.unit.title,
+    );
+    expect(titles).toEqual(['Unit 2', 'Unit 7', 'Unit 10']);
+  });
+
+  it('generates bundle id from title', () => {
+    const modules: Record<string, WordsFile> = {
+      './U/words.json': {
+        title: 'Vocab',
+        bundle: 'Unit 7',
+        groups: [{ name: 'G', words: [{ en: 'a', pl: 'b' }] }],
+      },
+    };
+    const entries = parseUnitEntries(modules);
+    expect(entries[0].kind).toBe('bundle');
+    if (entries[0].kind === 'bundle') {
+      expect(entries[0].id).toBe('unit-7');
+    }
   });
 });

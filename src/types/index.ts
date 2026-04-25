@@ -33,6 +33,7 @@ export interface ChallengeGroup {
 export interface WordsFile {
   title: string;
   type?: UnitType;
+  bundle?: string;
   groups: WordGroup[] | IrregularVerbGroup[];
 }
 
@@ -45,6 +46,21 @@ export interface Unit {
   challenges: ChallengeItem[];
   challengeGroups: ChallengeGroup[];
 }
+
+export interface UnitBundle {
+  kind: 'bundle';
+  id: string;
+  title: string;
+  subUnits: Unit[];
+  totalChallenges: number;
+}
+
+export interface StandaloneUnit {
+  kind: 'standalone';
+  unit: Unit;
+}
+
+export type UnitEntry = UnitBundle | StandaloneUnit;
 
 export interface DifficultyLevel {
   id: string;

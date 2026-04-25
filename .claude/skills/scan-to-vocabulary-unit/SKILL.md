@@ -63,7 +63,8 @@ Based on types in `src/types/index.ts`:
 
 ```json
 {
-  "title": "Unit N - Topic Name",
+  "title": "Vocabulary",
+  "bundle": "Unit N",
   "groups": [
     {
       "name": "Group Name",
@@ -79,8 +80,9 @@ Based on types in `src/types/index.ts`:
 
 ```json
 {
-  "title": "Irregular Verbs N",
+  "title": "Irregular Verbs",
   "type": "irregular-verbs",
+  "bundle": "Unit N",
   "groups": [
     {
       "name": "Group Name",
@@ -94,8 +96,9 @@ Based on types in `src/types/index.ts`:
 
 Constraints:
 
-- `title` -- string, required, user-facing label shown in the unit selector
+- `title` -- string, required, user-facing label shown in the sub-unit selector (e.g., "Vocabulary", "Irregular Verbs")
 - `type` -- optional, `"irregular-verbs"` for verb units; omit for vocabulary (defaults to `"vocabulary"`)
+- `bundle` -- optional, groups units under a parent entry in the unit selector (e.g., `"Unit 7"`). Units with the same `bundle` value appear as sub-sections of one entry. When a scan contains both vocabulary and irregular verbs from the same unit, use the same `bundle` value for both.
 - `groups` -- array, required, at least one group
 - Vocabulary groups: `name` (string) + `words` (array of `{ en, pl }` objects)
 - Irregular verb groups: `name` (string) + `words` (array of `{ base, pastSimple }` objects)
@@ -136,7 +139,8 @@ Given an image with the heading "Unit 8 - Weather" containing two sections "Weat
 
 ```json
 {
-  "title": "Unit 8 - Weather",
+  "title": "Vocabulary",
+  "bundle": "Unit 8",
   "groups": [
     {
       "name": "Weather types",
@@ -163,8 +167,9 @@ Given an image with a verb conjugation table titled "Irregular Verbs 2":
 
 ```json
 {
-  "title": "Irregular Verbs 2",
+  "title": "Irregular Verbs",
   "type": "irregular-verbs",
+  "bundle": "Unit 8",
   "groups": [
     {
       "name": "Communication verbs",

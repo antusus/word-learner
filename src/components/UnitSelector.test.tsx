@@ -1,10 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type { Unit } from '../types';
+import type { StandaloneUnit, UnitBundle, UnitEntry } from '../types';
 import { UnitSelector } from './UnitSelector';
 
-const mockUnits: Unit[] = [
-  {
+const standalone1: StandaloneUnit = {
+  kind: 'standalone',
+  unit: {
     id: 'Unit1',
     title: 'Unit 1 - Animals',
     type: 'vocabulary',
@@ -35,74 +36,84 @@ const mockUnits: Unit[] = [
       },
     ],
   },
-  {
-    id: 'Unit2',
-    title: 'Unit 2 - Colors',
-    type: 'vocabulary',
-    words: [
-      { en: 'red', pl: 'czerwony' },
-      { en: 'blue', pl: 'niebieski' },
-      { en: 'green', pl: 'zielony' },
-    ],
-    groups: [
-      {
-        name: 'Colors',
-        words: [
-          { en: 'red', pl: 'czerwony' },
-          { en: 'blue', pl: 'niebieski' },
-          { en: 'green', pl: 'zielony' },
-        ],
-      },
-    ],
-    challenges: [
-      { prompt: 'czerwony', answer: 'red' },
-      { prompt: 'niebieski', answer: 'blue' },
-      { prompt: 'zielony', answer: 'green' },
-    ],
-    challengeGroups: [
-      {
-        name: 'Colors',
-        items: [
-          { prompt: 'czerwony', answer: 'red' },
-          { prompt: 'niebieski', answer: 'blue' },
-          { prompt: 'zielony', answer: 'green' },
-        ],
-      },
-    ],
-  },
-];
+};
+
+const bundle1: UnitBundle = {
+  kind: 'bundle',
+  id: 'unit-3',
+  title: 'Unit 3',
+  totalChallenges: 5,
+  subUnits: [
+    {
+      id: 'Unit3',
+      title: 'Vocabulary',
+      type: 'vocabulary',
+      words: [],
+      groups: [],
+      challenges: [
+        { prompt: 'a', answer: 'b' },
+        { prompt: 'c', answer: 'd' },
+      ],
+      challengeGroups: [],
+    },
+    {
+      id: 'IrregularVerbs',
+      title: 'Irregular Verbs',
+      type: 'irregular-verbs',
+      words: [],
+      groups: [],
+      challenges: [
+        { prompt: 'go', answer: 'went' },
+        { prompt: 'see', answer: 'saw' },
+        { prompt: 'do', answer: 'did' },
+      ],
+      challengeGroups: [],
+    },
+  ],
+};
+
+const mockEntries: UnitEntry[] = [standalone1, bundle1];
 
 describe('UnitSelector', () => {
   it('renders the heading', () => {
-    render(<UnitSelector units={mockUnits} onSelect={() => {}} />);
+    render(<UnitSelector entries={mockEntries} onSelect={() => {}} />);
     expect(
       screen.getByRole('heading', { level: 1, name: 'Word Learner' }),
     ).toBeInTheDocument();
   });
 
-  it('renders all units', () => {
-    render(<UnitSelector units={mockUnits} onSelect={() => {}} />);
+  it('renders standalone units', () => {
+    render(<UnitSelector entries={mockEntries} onSelect={() => {}} />);
     expect(screen.getByText('Unit 1 - Animals')).toBeInTheDocument();
-    expect(screen.getByText('Unit 2 - Colors')).toBeInTheDocument();
-  });
-
-  it('shows word count for each unit', () => {
-    render(<UnitSelector units={mockUnits} onSelect={() => {}} />);
     expect(screen.getByText('2 words')).toBeInTheDocument();
-    expect(screen.getByText('3 words')).toBeInTheDocument();
   });
 
-  it('calls onSelect with the unit when clicked', async () => {
+  it('renders bundles with section count', () => {
+    render(<UnitSelector entries={mockEntries} onSelect={() => {}} />);
+    expect(screen.getByText('Unit 3')).toBeInTheDocument();
+    expect(screen.getByText('2 sections')).toBeInTheDocument();
+  });
+
+  it('calls onSelect with standalone entry when clicked', async () => {
     const user = userEvent.setup();
     const onSelect = vi.fn();
-    render(<UnitSelector units={mockUnits} onSelect={onSelect} />);
+    render(<UnitSelector entries={mockEntries} onSelect={onSelect} />);
 
     await user.click(screen.getByText('Unit 1 - Animals'));
-    expect(onSelect).toHaveBeenCalledWith(mockUnits[0]);
+    expect(onSelect).toHaveBeenCalledWith(standalone1);
   });
 
-  it('renders empty list when no units provided', () => {
-    render(<UnitSelector units={[]} onSelect={() => {}} />);
+  it('calls onSelect with bundle entry when clicked', async () => {
+    const user = userEvent.setup();
+    const onSelect = vi.fn();
+    render(<UnitSelector entries={mockEntries} onSelect={onSelect} />);
+
+    await user.click(screen.getByText('Unit 3'));
+    expect(onSelect).toHaveBeenCalledWith(bundle1);
+  });
+
+  it('renders empty list when no entries provided', () => {
+    render(<UnitSelector entries={[]} onSelect={() => {}} />);
     expect(screen.getByRole('list')).toBeInTheDocument();
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });

@@ -57,6 +57,7 @@ yarn deploy
 
 ## Workflow
 
+- Before starting work, if on main branch: `git pull origin main` to fetch latest changes
 - Always create a feature branch and open a pull request for changes
 - Do not commit directly to main
 - Use conventional commits (e.g., `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `test:`)
@@ -67,9 +68,11 @@ yarn deploy
 
 ## Architecture
 
-Screen flow: `UnitSelector → GroupSelector (if 2+ groups) → ModeSelector (if 2+ modes) → Game`
+Screen flow: `UnitSelector → SubUnitSelector (if bundle) → GroupSelector (if 2+ groups) → ModeSelector (if 2+ modes) → Game`
 
-State machine in `App.tsx` with screens: `units | groups | modes | quiz`.
+State machine in `App.tsx` with screens: `units | subunits | groups | modes | quiz`.
+
+Units can be **standalone** (appear directly in unit list) or **bundled** (grouped under a parent entry via `bundle` field in `words.json`). Bundled units show as "N sections" in the unit list, and clicking opens a sub-unit picker.
 
 ### Data Flow
 
@@ -78,6 +81,7 @@ src/data/<UnitName>/words.json
   → loader.ts (Vite glob auto-discovery)
   → challengeMapper.ts (Word/Verb → ChallengeItem)
   → Unit { id, title, type, challenges, challengeGroups, words, groups }
+  → parseUnitEntries groups by bundle → UnitEntry[]
   → Components receive Unit + optional ChallengeItem[]
 ```
 
@@ -86,6 +90,7 @@ src/data/<UnitName>/words.json
 - `UnitType`: `'vocabulary' | 'irregular-verbs'`
 - `ChallengeItem { prompt, answer }` — generic container used by all game modes
 - `Unit` — carries both legacy `words/groups` (vocabulary only) and `challenges/challengeGroups` (all types)
+- `UnitEntry = UnitBundle | StandaloneUnit` — top-level entry in unit selector
 - `GameModeProps { unit, challenges?, onComplete, onExit }` — contract for game mode components
 
 ### Key Modules
@@ -102,10 +107,11 @@ src/data/<UnitName>/words.json
 ## How to Add a New Unit
 
 1. Create `src/data/<FolderName>/words.json`
-2. Vocabulary: `{ title, groups: [{ name, words: [{ en, pl }] }] }`
-3. Irregular verbs: `{ title, type: "irregular-verbs", groups: [{ name, words: [{ base, pastSimple }] }] }`
-4. Auto-discovered by Vite glob — no registration needed
-5. Folder naming: `Unit{N}` for vocab, `IrregularVerbs` for verbs
+2. Vocabulary: `{ title, bundle?: "Unit N", groups: [{ name, words: [{ en, pl }] }] }`
+3. Irregular verbs: `{ title, type: "irregular-verbs", bundle?: "Unit N", groups: [{ name, words: [{ base, pastSimple }] }] }`
+4. Use `bundle` field to group related units (e.g., vocabulary + irregular verbs for same unit)
+5. Auto-discovered by Vite glob — no registration needed
+6. Folder naming: `Unit{N}` for vocab, `IrregularVerbs` for verbs
 
 ## How to Add a New Game Mode
 
