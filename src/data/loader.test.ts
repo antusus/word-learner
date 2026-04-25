@@ -1,5 +1,5 @@
 import type { WordsFile } from '../types';
-import { parseUnits } from './loader';
+import { parseUnitEntries, parseUnits } from './loader';
 
 const fixtureModules: Record<string, WordsFile> = {
   './UnitA/words.json': {
@@ -239,5 +239,150 @@ describe('parseUnits', () => {
         items: [{ prompt: 'run', answer: 'ran' }],
       });
     });
+  });
+});
+
+describe('parseUnitEntries', () => {
+  it('wraps all units as StandaloneUnit when no bundles exist', () => {
+    const modules: Record<string, WordsFile> = {
+      './UnitA/words.json': {
+        title: 'Unit A',
+        groups: [{ name: 'G', words: [{ en: 'a', pl: 'b' }] }],
+      },
+      './UnitB/words.json': {
+        title: 'Unit B',
+        groups: [{ name: 'G', words: [{ en: 'c', pl: 'd' }] }],
+      },
+    };
+
+    const entries = parseUnitEntries(modules);
+    expect(entries).toHaveLength(2);
+    expect(entries.every((e) => e.kind === 'standalone')).toBe(true);
+  });
+
+  it('groups two modules with the same bundle into one UnitBundle', () => {
+    const modules: Record<string, WordsFile> = {
+      './Unit7/words.json': {
+        title: 'Unit 7 - Vocabulary',
+        bundle: 'Unit 7',
+        groups: [{ name: 'G1', words: [{ en: 'a', pl: 'b' }] }],
+      },
+      './IrregularVerbs/words.json': {
+        title: 'Unit 7 - Irregular Verbs',
+        bundle: 'Unit 7',
+        type: 'irregular-verbs',
+        groups: [{ name: 'G2', words: [{ base: 'go', pastSimple: 'went' }] }],
+      },
+    };
+
+    const entries = parseUnitEntries(modules);
+    expect(entries).toHaveLength(1);
+    expect(entries[0].kind).toBe('bundle');
+
+    const bundle = entries[0] as {
+      kind: 'bundle';
+      title: string;
+      subUnits: unknown[];
+    };
+    expect(bundle.title).toBe('Unit 7');
+    expect(bundle.subUnits).toHaveLength(2);
+  });
+
+  it('returns mixed entries: bundled and standalone', () => {
+    const modules: Record<string, WordsFile> = {
+      './Unit5/words.json': {
+        title: 'Unit 5 - Standalone',
+        groups: [{ name: 'G', words: [{ en: 'x', pl: 'y' }] }],
+      },
+      './Unit7/words.json': {
+        title: 'Unit 7 - Vocabulary',
+        bundle: 'Unit 7',
+        groups: [{ name: 'G1', words: [{ en: 'a', pl: 'b' }] }],
+      },
+      './IrregularVerbs/words.json': {
+        title: 'Unit 7 - Irregular Verbs',
+        bundle: 'Unit 7',
+        type: 'irregular-verbs',
+        groups: [{ name: 'G2', words: [{ base: 'go', pastSimple: 'went' }] }],
+      },
+    };
+
+    const entries = parseUnitEntries(modules);
+    expect(entries).toHaveLength(2);
+
+    const standalone = entries.find((e) => e.kind === 'standalone');
+    const bundle = entries.find((e) => e.kind === 'bundle');
+    expect(standalone).toBeDefined();
+    expect(bundle).toBeDefined();
+  });
+
+  it('sorts entries by title with numeric locale ordering', () => {
+    const modules: Record<string, WordsFile> = {
+      './Unit10/words.json': {
+        title: 'Unit 10',
+        groups: [{ name: 'G', words: [{ en: 'a', pl: 'b' }] }],
+      },
+      './Unit7Vocab/words.json': {
+        title: 'Unit 7 - Vocabulary',
+        bundle: 'Unit 7',
+        groups: [{ name: 'G', words: [{ en: 'c', pl: 'd' }] }],
+      },
+      './Unit7Verbs/words.json': {
+        title: 'Unit 7 - Verbs',
+        bundle: 'Unit 7',
+        type: 'irregular-verbs',
+        groups: [{ name: 'G', words: [{ base: 'go', pastSimple: 'went' }] }],
+      },
+      './Unit2/words.json': {
+        title: 'Unit 2',
+        groups: [{ name: 'G', words: [{ en: 'e', pl: 'f' }] }],
+      },
+    };
+
+    const entries = parseUnitEntries(modules);
+    const titles = entries.map((e) =>
+      e.kind === 'bundle' ? e.title : e.unit.title,
+    );
+    expect(titles).toEqual(['Unit 2', 'Unit 7', 'Unit 10']);
+  });
+
+  it('computes totalChallenges as sum of sub-unit challenges', () => {
+    const modules: Record<string, WordsFile> = {
+      './Unit7/words.json': {
+        title: 'Unit 7 - Vocabulary',
+        bundle: 'Unit 7',
+        groups: [
+          {
+            name: 'G1',
+            words: [
+              { en: 'a', pl: 'b' },
+              { en: 'c', pl: 'd' },
+            ],
+          },
+        ],
+      },
+      './IrregularVerbs/words.json': {
+        title: 'Unit 7 - Irregular Verbs',
+        bundle: 'Unit 7',
+        type: 'irregular-verbs',
+        groups: [
+          {
+            name: 'G2',
+            words: [
+              { base: 'go', pastSimple: 'went' },
+              { base: 'see', pastSimple: 'saw' },
+              { base: 'run', pastSimple: 'ran' },
+            ],
+          },
+        ],
+      },
+    };
+
+    const entries = parseUnitEntries(modules);
+    expect(entries).toHaveLength(1);
+    expect(entries[0].kind).toBe('bundle');
+
+    const bundle = entries[0] as { kind: 'bundle'; totalChallenges: number };
+    expect(bundle.totalChallenges).toBe(5);
   });
 });
