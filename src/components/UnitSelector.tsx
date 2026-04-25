@@ -1,31 +1,37 @@
-import type { Unit } from '../types';
+import type { UnitEntry } from '../types';
 
 interface UnitSelectorProps {
-  units: Unit[];
-  onSelect: (unit: Unit) => void;
+  entries: UnitEntry[];
+  onSelect: (entry: UnitEntry) => void;
 }
 
-export function UnitSelector({ units, onSelect }: UnitSelectorProps) {
+export function UnitSelector({ entries, onSelect }: UnitSelectorProps) {
   return (
     <div className="unit-selector">
       <h1>Word Learner</h1>
       <p>Select a unit to practice:</p>
       <ul className="unit-list">
-        {units.map((unit) => (
-          <li key={unit.id}>
-            <button
-              type="button"
-              className="unit-button"
-              onClick={() => onSelect(unit)}
-            >
-              <span className="unit-title">{unit.title}</span>
-              <span className="unit-count">
-                {unit.challenges.length}{' '}
-                {unit.type === 'irregular-verbs' ? 'verbs' : 'words'}
-              </span>
-            </button>
-          </li>
-        ))}
+        {entries.map((entry) => {
+          const isBundle = entry.kind === 'bundle';
+          const key = isBundle ? entry.id : entry.unit.id;
+          const title = isBundle ? entry.title : entry.unit.title;
+          const count = isBundle
+            ? `${entry.subUnits.length} ${entry.subUnits.length === 1 ? 'section' : 'sections'}`
+            : `${entry.unit.challenges.length} ${entry.unit.type === 'irregular-verbs' ? 'verbs' : 'words'}`;
+
+          return (
+            <li key={key}>
+              <button
+                type="button"
+                className="unit-button"
+                onClick={() => onSelect(entry)}
+              >
+                <span className="unit-title">{title}</span>
+                <span className="unit-count">{count}</span>
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

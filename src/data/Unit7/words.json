@@ -1,0 +1,101 @@
+{
+  "title": "Vocabulary",
+  "bundle": "Unit 7",
+  "groups": [
+    {
+      "name": "Events and activities",
+      "words": [
+        { "en": "book fair", "pl": "targi książki" },
+        { "en": "clothes swap", "pl": "wymiana ubrań" },
+        { "en": "conservation workshop", "pl": "warsztaty ekologiczne" },
+        { "en": "esports tournament", "pl": "turniej e-sportowy" },
+        {
+          "en": "immersive VR experience",
+          "pl": "wciągające doświadczenie wirtualnej rzeczywistości"
+        },
+        { "en": "theatre workshop", "pl": "warsztaty teatralne" },
+        { "en": "treasure hunt", "pl": "poszukiwanie skarbu" },
+        { "en": "yoga class", "pl": "lekcja jogi" }
+      ]
+    },
+    {
+      "name": "Useful verbs",
+      "words": [
+        { "en": "arrive", "pl": "przyjechać" },
+        { "en": "discover", "pl": "odkryć" },
+        { "en": "follow", "pl": "podążać" },
+        { "en": "plant", "pl": "sadzić" },
+        { "en": "stream", "pl": "transmitować na żywo" },
+        { "en": "swap", "pl": "wymienić" }
+      ]
+    },
+    {
+      "name": "Getting around",
+      "words": [
+        { "en": "bus", "pl": "autobus" },
+        { "en": "car", "pl": "samochód" },
+        { "en": "coach", "pl": "autokar" },
+        { "en": "ferry", "pl": "prom" },
+        { "en": "helicopter", "pl": "helikopter" },
+        { "en": "motorbike", "pl": "motocykl" },
+        { "en": "on foot", "pl": "pieszo" },
+        { "en": "plane", "pl": "samolot" },
+        { "en": "taxi", "pl": "taksówka" },
+        { "en": "train", "pl": "pociąg" },
+        { "en": "tram", "pl": "tramwaj" },
+        { "en": "underground", "pl": "metro" }
+      ]
+    },
+    {
+      "name": "Real English",
+      "words": [
+        {
+          "en": "That's the coolest T-shirt ever!",
+          "pl": "To najfajniejsza koszulka, jaką widziałem/widziałam!"
+        },
+        { "en": "It was so cool!", "pl": "To było super!" },
+        { "en": "That sounds like fun!", "pl": "Brzmi fajnie!" }
+      ]
+    },
+    {
+      "name": "Asking for and giving information about a past event",
+      "words": [
+        { "en": "Morning! How are you?", "pl": "Cześć! Jak się masz?" },
+        { "en": "I'm tired!", "pl": "Jestem zmęczony!" },
+        {
+          "en": "What did you do at the weekend?",
+          "pl": "Co robiłeś/robiłaś w weekend?"
+        },
+        {
+          "en": "I went to (an esports tournament yesterday).",
+          "pl": "Poszedłem/Poszłam na (turniej e-sportowy wczoraj)."
+        },
+        { "en": "What was it like?", "pl": "Jak było?" },
+        { "en": "It was amazing!", "pl": "Było wspaniale!" },
+        { "en": "Where was it?", "pl": "Gdzie się odbywał?" },
+        {
+          "en": "It was (in Main Hall in the town centre).",
+          "pl": "Odbywał się (w hali głównej w centrum miasta)."
+        },
+        {
+          "en": "How did you get there?",
+          "pl": "W jaki sposób tam dotarłeś/dotarłaś?"
+        },
+        { "en": "By bus.", "pl": "Autobusem." },
+        {
+          "en": "What time did it start?",
+          "pl": "O której godzinie się zaczął?"
+        },
+        {
+          "en": "It started at (two o'clock on Saturday afternoon).",
+          "pl": "Zaczął się o (drugiej po południu w sobotę)."
+        },
+        { "en": "How was your weekend?", "pl": "Jak tobie upłynął weekend?" },
+        {
+          "en": "Did you do anything fun?",
+          "pl": "Robiłeś/Robiłaś coś fajnego?"
+        }
+      ]
+    }
+  ]
+}
