@@ -1,0 +1,55 @@
+{
+  "title": "Vocabulary",
+  "bundle": "Unit 8",
+  "groups": [
+    {
+      "name": "Weather",
+      "words": [
+        { "en": "cloudy", "pl": "pochmurny" },
+        { "en": "dry", "pl": "suchy" },
+        { "en": "fog", "pl": "mgła" },
+        { "en": "freezing", "pl": "mroźny" },
+        { "en": "snowy", "pl": "śnieżny" },
+        { "en": "stormy", "pl": "burzowy" },
+        { "en": "warm", "pl": "ciepły" },
+        { "en": "wet", "pl": "mokry" },
+        { "en": "windy", "pl": "wietrzny" }
+      ]
+    },
+    {
+      "name": "Seasons",
+      "words": [
+        { "en": "spring", "pl": "wiosna" },
+        { "en": "summer", "pl": "lato" },
+        { "en": "autumn", "pl": "jesień" },
+        { "en": "winter", "pl": "zima" }
+      ]
+    },
+    {
+      "name": "Geographic features",
+      "words": [
+        { "en": "beach", "pl": "plaża" },
+        { "en": "cliff", "pl": "klif" },
+        { "en": "countryside", "pl": "wieś" },
+        { "en": "desert", "pl": "pustynia" },
+        { "en": "forest", "pl": "las" },
+        { "en": "jungle", "pl": "dżungla" },
+        { "en": "lake", "pl": "jezioro" },
+        { "en": "mountain", "pl": "góra" },
+        { "en": "ocean", "pl": "ocean" },
+        { "en": "river", "pl": "rzeka" },
+        { "en": "valley", "pl": "dolina" },
+        { "en": "waterfall", "pl": "wodospad" }
+      ]
+    },
+    {
+      "name": "Real English",
+      "words": [
+        { "en": "Let me see.", "pl": "Zobaczmy." },
+        { "en": "Are you kidding?", "pl": "Żartujesz?" },
+        { "en": "Hang on.", "pl": "Poczekaj." },
+        { "en": "I can't believe it!", "pl": "Nie wierzę!" }
+      ]
+    }
+  ]
+}
