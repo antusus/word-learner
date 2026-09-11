@@ -244,7 +244,30 @@ describe('ResultsSummary', () => {
       .querySelectorAll('.fib-error-letters')[0]
       .querySelectorAll('.fib-letter-correct, .fib-letter-wrong');
     expect(typedTiles[1].className).toBe('fib-letter-wrong');
-    expect(typedTiles[1].textContent).toBe('');
+    expect(typedTiles[1].textContent).toBe('·');
+  });
+
+  it('marks a tile the user never filled in with a placeholder', () => {
+    const results: WordResult[] = [
+      {
+        challenge: { prompt: 'pies', answer: 'dog' },
+        userAnswer: ['d', '', 'g'],
+        correct: false,
+      },
+    ];
+    const { container } = render(
+      <ResultsSummary
+        results={results}
+        unitTitle="Unit 1"
+        totalWords={1}
+        onExit={() => {}}
+      />,
+    );
+
+    const [typedRow, correctRow] =
+      container.querySelectorAll('.fib-error-letters');
+    expect(typedRow.textContent).toBe('d·g');
+    expect(correctRow.textContent).toBe('dog');
   });
 
   it('renders one row per error when two prompts share an answer', () => {

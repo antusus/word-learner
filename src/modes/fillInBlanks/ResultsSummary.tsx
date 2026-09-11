@@ -1,6 +1,12 @@
 import type { ChallengeItem } from '../../types';
 import { groupIndicesByWord } from './blanking';
 
+// An unfilled blank is stored as '', which would render as an empty tile no
+// different from a wrongly typed space. The dot is for the eye; screen readers
+// tend to skip it, so the aria-label spells the same gap as an underscore.
+const MISSING_TILE = '·';
+const MISSING_SPOKEN = '_';
+
 export interface WordResult {
   challenge: ChallengeItem;
   userAnswer: string[];
@@ -41,9 +47,9 @@ export function ResultsSummary({
           <ul className="fib-error-list">
             {errors.map((r, row) => {
               const wordGroups = groupIndicesByWord(r.challenge.answer);
-              // Unfilled blanks are stored as '', which would silently vanish
-              // from the label and read as a different word.
-              const typedLabel = r.userAnswer.map((c) => c || '_').join('');
+              const typedLabel = r.userAnswer
+                .map((c) => c || MISSING_SPOKEN)
+                .join('');
               return (
                 <li
                   // biome-ignore lint/suspicious/noArrayIndexKey: two prompts can share an answer, so only the row position is unique -- the list is built once and never reordered
@@ -68,7 +74,7 @@ export function ResultsSummary({
                           >
                             {group.map((i) => {
                               const char = r.challenge.answer[i];
-                              const userChar = r.userAnswer[i] ?? ' ';
+                              const userChar = r.userAnswer[i] ?? '';
                               const isCorrect =
                                 userChar.toLowerCase() === char.toLowerCase();
                               return (
@@ -80,7 +86,7 @@ export function ResultsSummary({
                                       : 'fib-letter-wrong'
                                   }
                                 >
-                                  {userChar}
+                                  {userChar || MISSING_TILE}
                                 </span>
                               );
                             })}
