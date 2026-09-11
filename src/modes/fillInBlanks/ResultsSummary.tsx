@@ -39,13 +39,17 @@ export function ResultsSummary({
             {totalWords - errors.length} / {totalWords} correct
           </p>
           <ul className="fib-error-list">
-            {errors.map((r) => {
+            {errors.map((r, row) => {
               const wordGroups = groupIndicesByWord(r.challenge.answer);
               // Unfilled blanks are stored as '', which would silently vanish
               // from the label and read as a different word.
               const typedLabel = r.userAnswer.map((c) => c || '_').join('');
               return (
-                <li key={r.challenge.answer} className="fib-error-item">
+                <li
+                  // biome-ignore lint/suspicious/noArrayIndexKey: two prompts can share an answer, so only the row position is unique -- the list is built once and never reordered
+                  key={`${r.challenge.answer}-${row}`}
+                  className="fib-error-item"
+                >
                   <span className="fib-error-polish">{r.challenge.prompt}</span>
                   <div className="fib-error-cards">
                     <div className="fib-error-card">

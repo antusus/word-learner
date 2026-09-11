@@ -247,6 +247,39 @@ describe('ResultsSummary', () => {
     expect(typedTiles[1].textContent).toBe('');
   });
 
+  it('renders one row per error when two prompts share an answer', () => {
+    const consoleError = vi
+      .spyOn(console, 'error')
+      .mockImplementation(() => {});
+    const results: WordResult[] = [
+      {
+        challenge: { prompt: 'ocena', answer: 'mark' },
+        userAnswer: ['m', 'a', 'r', 'k'],
+        correct: false,
+      },
+      {
+        challenge: { prompt: 'znak', answer: 'mark' },
+        userAnswer: ['m', 'a', 'r', 'c'],
+        correct: false,
+      },
+    ];
+    const { container } = render(
+      <ResultsSummary
+        results={results}
+        unitTitle="Unit 1"
+        totalWords={2}
+        onExit={() => {}}
+      />,
+    );
+
+    expect(container.querySelectorAll('.fib-error-item')).toHaveLength(2);
+    expect(screen.getByText('ocena')).toBeInTheDocument();
+    expect(screen.getByText('znak')).toBeInTheDocument();
+    expect(consoleError).not.toHaveBeenCalled();
+
+    consoleError.mockRestore();
+  });
+
   it('labels an entirely empty answer rather than rendering a nameless row', () => {
     const results: WordResult[] = [
       {
