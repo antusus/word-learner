@@ -173,4 +173,47 @@ describe('WordChallenge', () => {
 
     expect(firstInput).toHaveFocus();
   });
+
+  it('renders one word group per word and no space slots', () => {
+    const phrase = 'school time';
+    const multiWordSlots: CharSlot[] = phrase.split('').map((char, index) => ({
+      char,
+      isBlank: false,
+      index,
+    }));
+
+    const { container } = render(
+      <WordChallenge
+        challenge={{ prompt: 'czas szkolny', answer: phrase }}
+        slots={multiWordSlots}
+        userInput={[]}
+        onChange={() => {}}
+      />,
+    );
+
+    const groups = container.querySelectorAll('.fib-word-group');
+    expect(groups).toHaveLength(2);
+    expect(groups[0].children).toHaveLength(6);
+    expect(groups[1].children).toHaveLength(4);
+  });
+
+  it('keeps absolute slot indices for blanks after a space', () => {
+    const phrase = 'school time';
+    const multiWordSlots: CharSlot[] = phrase.split('').map((char, index) => ({
+      char,
+      isBlank: index === 7,
+      index,
+    }));
+
+    render(
+      <WordChallenge
+        challenge={{ prompt: 'czas szkolny', answer: phrase }}
+        slots={multiWordSlots}
+        userInput={[]}
+        onChange={() => {}}
+      />,
+    );
+
+    expect(screen.getByLabelText('Letter 8')).toBeInTheDocument();
+  });
 });

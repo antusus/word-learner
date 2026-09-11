@@ -54,3 +54,30 @@ export function generateBlanks(
     index,
   }));
 }
+
+/**
+ * Groups the character indices of a phrase into one array per space-delimited
+ * word, so multi-word answers can be rendered with a visible word break
+ * instead of an empty tile where the space used to be. Leading, trailing and
+ * repeated spaces cannot produce a phantom word.
+ *
+ * Indices are absolute positions in the input string — callers rely on that
+ * to keep a user's answer aligned with the expected answer character by
+ * character.
+ */
+export function groupIndicesByWord(phrase: string): number[][] {
+  const groups: number[][] = [];
+  let current: number[] = [];
+
+  for (let i = 0; i < phrase.length; i++) {
+    if (phrase[i] === ' ') {
+      if (current.length > 0) groups.push(current);
+      current = [];
+    } else {
+      current.push(i);
+    }
+  }
+  if (current.length > 0) groups.push(current);
+
+  return groups;
+}
