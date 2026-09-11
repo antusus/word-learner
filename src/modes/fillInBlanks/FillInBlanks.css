@@ -260,8 +260,27 @@
 
 .fib-error-letters {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 0.75rem;
+}
+
+.fib-error-word {
+  display: inline-flex;
+  flex-shrink: 0;
   gap: 0.125rem;
+  white-space: nowrap;
+}
+
+/* A long single word cannot wrap, so shrink the tiles instead: 'presentation'
+   at 2rem per tile is wider than a 360px card. */
+@media (max-width: 420px) {
+  .fib-letter-correct,
+  .fib-letter-wrong {
+    width: 1.25rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
 }
 
 .fib-error-cards {

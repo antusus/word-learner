@@ -1,4 +1,4 @@
-import { generateBlanks } from './blanking';
+import { generateBlanks, groupIndicesByWord } from './blanking';
 
 describe('generateBlanks', () => {
   it('returns one slot per character', () => {
@@ -79,5 +79,40 @@ describe('generateBlanks', () => {
     const slots = generateBlanks('hello', 1.0, false);
     const revealed = slots.filter((s) => !s.isBlank && /[a-zA-Z]/.test(s.char));
     expect(revealed.length).toBeGreaterThanOrEqual(1);
+  });
+});
+
+describe('groupIndicesByWord', () => {
+  it('returns a single group for a single word', () => {
+    expect(groupIndicesByWord('cat')).toEqual([[0, 1, 2]]);
+  });
+
+  it('returns absolute indices per word and drops the space', () => {
+    expect(groupIndicesByWord('school time')).toEqual([
+      [0, 1, 2, 3, 4, 5],
+      [7, 8, 9, 10],
+    ]);
+  });
+
+  it('never emits empty groups for leading, trailing or repeated spaces', () => {
+    const groups = groupIndicesByWord('  a  b  ');
+    expect(groups).toEqual([[2], [5]]);
+    for (const group of groups) {
+      expect(group.length).toBeGreaterThan(0);
+    }
+  });
+
+  it('keeps a slash inside its word', () => {
+    expect(groupIndicesByWord('get a good/low mark')).toEqual([
+      [0, 1, 2],
+      [4],
+      [6, 7, 8, 9, 10, 11, 12, 13],
+      [15, 16, 17, 18],
+    ]);
+  });
+
+  it('returns no groups for an empty or whitespace-only string', () => {
+    expect(groupIndicesByWord('')).toEqual([]);
+    expect(groupIndicesByWord('   ')).toEqual([]);
   });
 });

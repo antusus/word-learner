@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react';
 import type { ChallengeItem } from '../../types';
 import type { CharSlot } from './blanking';
+import { groupIndicesByWord } from './blanking';
 import { Hint } from './Hint';
 
 interface WordChallengeProps {
@@ -13,18 +14,8 @@ interface WordChallengeProps {
 }
 
 function groupSlotsByWord(slots: CharSlot[]): CharSlot[][] {
-  const groups: CharSlot[][] = [];
-  let current: CharSlot[] = [];
-  for (const slot of slots) {
-    if (slot.char === ' ') {
-      if (current.length > 0) groups.push(current);
-      current = [];
-    } else {
-      current.push(slot);
-    }
-  }
-  if (current.length > 0) groups.push(current);
-  return groups;
+  const phrase = slots.map((slot) => slot.char).join('');
+  return groupIndicesByWord(phrase).map((group) => group.map((i) => slots[i]));
 }
 
 export function WordChallenge({

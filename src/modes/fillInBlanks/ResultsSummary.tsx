@@ -1,4 +1,5 @@
 import type { ChallengeItem } from '../../types';
+import { groupIndicesByWord } from './blanking';
 
 export interface WordResult {
   challenge: ChallengeItem;
@@ -38,50 +39,79 @@ export function ResultsSummary({
             {totalWords - errors.length} / {totalWords} correct
           </p>
           <ul className="fib-error-list">
-            {errors.map((r) => (
-              <li key={r.challenge.answer} className="fib-error-item">
-                <span className="fib-error-polish">{r.challenge.prompt}</span>
-                <div className="fib-error-cards">
-                  <div className="fib-error-card">
-                    <span className="fib-error-card-label">You typed</span>
-                    <div className="fib-error-letters">
-                      {r.challenge.answer.split('').map((char, i) => {
-                        const userChar = r.userAnswer[i] ?? ' ';
-                        const isCorrect =
-                          userChar.toLowerCase() === char.toLowerCase();
-                        return (
+            {errors.map((r) => {
+              const wordGroups = groupIndicesByWord(r.challenge.answer);
+              // Unfilled blanks are stored as '', which would silently vanish
+              // from the label and read as a different word.
+              const typedLabel = r.userAnswer.map((c) => c || '_').join('');
+              return (
+                <li key={r.challenge.answer} className="fib-error-item">
+                  <span className="fib-error-polish">{r.challenge.prompt}</span>
+                  <div className="fib-error-cards">
+                    <div className="fib-error-card">
+                      <span className="fib-error-card-label">You typed</span>
+                      {/* Space tiles are dropped, so the tile text runs together —
+                        the label is what conveys word breaks to screen readers. */}
+                      <div
+                        className="fib-error-letters"
+                        role="img"
+                        aria-label={typedLabel}
+                      >
+                        {wordGroups.map((group) => (
                           <span
-                            // biome-ignore lint/suspicious/noArrayIndexKey: characters are static positional data — index is the correct key
-                            key={`${r.challenge.answer}-user-${i}`}
-                            className={
-                              isCorrect
-                                ? 'fib-letter-correct'
-                                : 'fib-letter-wrong'
-                            }
+                            key={`${r.challenge.answer}-user-group-${group[0]}`}
+                            className="fib-error-word"
                           >
-                            {userChar}
+                            {group.map((i) => {
+                              const char = r.challenge.answer[i];
+                              const userChar = r.userAnswer[i] ?? ' ';
+                              const isCorrect =
+                                userChar.toLowerCase() === char.toLowerCase();
+                              return (
+                                <span
+                                  key={`${r.challenge.answer}-user-${i}`}
+                                  className={
+                                    isCorrect
+                                      ? 'fib-letter-correct'
+                                      : 'fib-letter-wrong'
+                                  }
+                                >
+                                  {userChar}
+                                </span>
+                              );
+                            })}
                           </span>
-                        );
-                      })}
+                        ))}
+                      </div>
+                    </div>
+                    <div className="fib-error-card">
+                      <span className="fib-error-card-label">Correct</span>
+                      <div
+                        className="fib-error-letters"
+                        role="img"
+                        aria-label={r.challenge.answer}
+                      >
+                        {wordGroups.map((group) => (
+                          <span
+                            key={`${r.challenge.answer}-correct-group-${group[0]}`}
+                            className="fib-error-word"
+                          >
+                            {group.map((i) => (
+                              <span
+                                key={`${r.challenge.answer}-correct-${i}`}
+                                className="fib-letter-correct"
+                              >
+                                {r.challenge.answer[i]}
+                              </span>
+                            ))}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  <div className="fib-error-card">
-                    <span className="fib-error-card-label">Correct</span>
-                    <div className="fib-error-letters">
-                      {r.challenge.answer.split('').map((char, i) => (
-                        <span
-                          // biome-ignore lint/suspicious/noArrayIndexKey: characters are static positional data — index is the correct key
-                          key={`${r.challenge.answer}-correct-${i}`}
-                          className="fib-letter-correct"
-                        >
-                          {char}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </li>
-            ))}
+                </li>
+              );
+            })}
           </ul>
         </>
       )}
