@@ -1,0 +1,86 @@
+{
+  "title": "Vocabulary",
+  "bundle": "Unit 1",
+  "groups": [
+    {
+      "name": "School life 1",
+      "words": [
+        { "en": "do a presentation", "pl": "przygotować prezentację" },
+        { "en": "fail a test", "pl": "nie zaliczyć testu/klasówki" },
+        { "en": "get a good/low mark", "pl": "dostać dobrą/słabą ocenę" },
+        { "en": "miss school", "pl": "opuszczać zajęcia w szkole" },
+        { "en": "pass a test", "pl": "zaliczyć test/klasówkę" },
+        {
+          "en": "revise for a test",
+          "pl": "powtarzać materiał przed testem/klasówką"
+        },
+        { "en": "take a test", "pl": "pisać test/klasówkę" },
+        { "en": "take notes", "pl": "notować" },
+        { "en": "wear a uniform", "pl": "nosić mundurek" },
+        { "en": "write an essay", "pl": "pisać wypracowanie" }
+      ]
+    },
+    {
+      "name": "School life 2",
+      "words": [
+        { "en": "breaktime", "pl": "przerwa" },
+        { "en": "private school", "pl": "szkoła prywatna" },
+        { "en": "school year", "pl": "rok szkolny" },
+        { "en": "state school", "pl": "szkoła publiczna" },
+        { "en": "term/terms", "pl": "semestr/semestry" }
+      ]
+    },
+    {
+      "name": "Friendship",
+      "words": [
+        { "en": "cheer someone up", "pl": "pocieszyć kogoś" },
+        { "en": "feel lonely", "pl": "czuć się samotnym/samotną" },
+        { "en": "get on (well)", "pl": "(dobrze) się dogadywać" },
+        { "en": "get to know", "pl": "poznać" },
+        { "en": "have (a lot) in common", "pl": "mieć (dużo) wspólnego" },
+        { "en": "have an argument", "pl": "pokłócić się" },
+        { "en": "keep a secret", "pl": "dochowywać tajemnicy" },
+        { "en": "make friends", "pl": "zaprzyjaźnić się" },
+        { "en": "say sorry", "pl": "przeprosić" },
+        { "en": "tell the truth", "pl": "mówić prawdę" }
+      ]
+    },
+    {
+      "name": "Real English",
+      "words": [
+        {
+          "en": "Saturday morning doesn't work for me.",
+          "pl": "Sobota rano mi nie pasuje."
+        },
+        { "en": "That's so cool!", "pl": "Świetnie!" },
+        { "en": "Oops!", "pl": "Ojej!" },
+        { "en": "I give up!", "pl": "Poddaję się!" }
+      ]
+    },
+    {
+      "name": "Agreeing and disagreeing",
+      "words": [
+        { "en": "I disagree!", "pl": "Nie zgadzam się!" },
+        { "en": "That's true.", "pl": "To prawda." },
+        { "en": "Exactly!", "pl": "No właśnie!" },
+        {
+          "en": "I'm not sure about that.",
+          "pl": "Nie jestem tego pewny/pewna."
+        },
+        { "en": "That's a good point!", "pl": "Słuszna uwaga!" },
+        { "en": "I think so, too.", "pl": "Też tak sądzę." }
+      ]
+    },
+    {
+      "name": "Reading and culture",
+      "words": [
+        { "en": "equal", "pl": "równy" },
+        { "en": "national costume", "pl": "strój narodowy" },
+        { "en": "print", "pl": "nadruk, wzór" },
+        { "en": "robe", "pl": "szata" },
+        { "en": "smock", "pl": "fartuch, kitel" },
+        { "en": "vary", "pl": "różnić się" }
+      ]
+    }
+  ]
+}
