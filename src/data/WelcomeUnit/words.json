@@ -1,0 +1,75 @@
+{
+  "title": "Welcome Unit",
+  "groups": [
+    {
+      "name": "Everyday activities",
+      "words": [
+        { "en": "do homework", "pl": "odrabiać pracę domową" },
+        { "en": "get up", "pl": "wstawać z łóżka" },
+        { "en": "go home", "pl": "wracać do domu" },
+        { "en": "go to bed", "pl": "iść do łóżka" },
+        { "en": "go to school", "pl": "iść do szkoły" },
+        { "en": "have breakfast", "pl": "jeść śniadanie" },
+        { "en": "have lessons", "pl": "mieć lekcje" },
+        { "en": "have lunch", "pl": "jeść lunch" }
+      ]
+    },
+    {
+      "name": "Food",
+      "words": [
+        { "en": "biscuit", "pl": "ciastko/herbatnik" },
+        { "en": "broccoli", "pl": "brokuły" },
+        { "en": "carrot", "pl": "marchewka" },
+        { "en": "chickpea", "pl": "ciecierzyca" },
+        { "en": "grape", "pl": "winogrono" },
+        { "en": "hummus", "pl": "hummus" },
+        { "en": "rice", "pl": "ryż" },
+        { "en": "salad", "pl": "sałatka" },
+        { "en": "strawberry", "pl": "truskawka" },
+        { "en": "tofu", "pl": "tofu" },
+        { "en": "sandwich", "pl": "kanapka" },
+        { "en": "water", "pl": "woda" }
+      ]
+    },
+    {
+      "name": "Free time activities",
+      "words": [
+        { "en": "chat on my phone", "pl": "pisać/czatować na telefonie" },
+        { "en": "cook", "pl": "gotować" },
+        { "en": "play an online game", "pl": "grać w grę online" },
+        { "en": "play basketball", "pl": "grać w koszykówkę" },
+        { "en": "ride a scooter", "pl": "jeździć na hulajnodze" },
+        { "en": "sing", "pl": "śpiewać" },
+        {
+          "en": "spend time with friends",
+          "pl": "spędzać czas z przyjaciółmi"
+        },
+        { "en": "watch a series", "pl": "oglądać serial" }
+      ]
+    },
+    {
+      "name": "School subjects",
+      "words": [
+        { "en": "art", "pl": "plastyka" },
+        { "en": "maths", "pl": "matematyka" },
+        { "en": "geography", "pl": "geografia" },
+        { "en": "PE", "pl": "wychowanie fizyczne" },
+        { "en": "computer science", "pl": "informatyka" },
+        { "en": "science", "pl": "przyroda" },
+        { "en": "history", "pl": "historia" },
+        { "en": "English", "pl": "angielski" }
+      ]
+    },
+    {
+      "name": "Places at school",
+      "words": [
+        { "en": "canteen", "pl": "stołówka" },
+        { "en": "staffroom", "pl": "pokój nauczycielski" },
+        { "en": "cloakroom", "pl": "szatnia" },
+        { "en": "library", "pl": "biblioteka" },
+        { "en": "laboratory", "pl": "laboratorium" },
+        { "en": "playground", "pl": "boisko szkolne" }
+      ]
+    }
+  ]
+}
