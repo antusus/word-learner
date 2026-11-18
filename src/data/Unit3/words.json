@@ -46,7 +46,10 @@
         { "en": "have a barbecue", "pl": "urządzać przyjęcie z grillem" },
         { "en": "have a cake", "pl": "jeść ciasto/tort" },
         { "en": "have a family meal", "pl": "jeść rodzinny posiłek" },
-        { "en": "have a (fancy dress) party", "pl": "urządzać imprezę (bal przebierańców)" },
+        {
+          "en": "have a (fancy dress) party",
+          "pl": "urządzać imprezę (bal przebierańców)"
+        },
         { "en": "invite guests", "pl": "zapraszać gości" }
       ]
     },
@@ -63,15 +66,30 @@
     {
       "name": "Leaving a party",
       "words": [
-        { "en": "Thanks for a great party!", "pl": "Dziękuję za wspaniałe przyjęcie / świetną imprezę!" },
+        {
+          "en": "Thanks for a great party!",
+          "pl": "Dziękuję za wspaniałe przyjęcie / świetną imprezę!"
+        },
         { "en": "You're welcome.", "pl": "Proszę." },
-        { "en": "Glad you enjoyed it.", "pl": "Cieszę się, że Ci się podobało." },
-        { "en": "I had a really good time.", "pl": "Świetnie się bawiłem/bawiłam." },
+        {
+          "en": "Glad you enjoyed it.",
+          "pl": "Cieszę się, że Ci się podobało."
+        },
+        {
+          "en": "I had a really good time.",
+          "pl": "Świetnie się bawiłem/bawiłam."
+        },
         { "en": "Thanks for the present.", "pl": "Dziękuję za prezent." },
-        { "en": "I really enjoyed the party.", "pl": "Bardzo mi się podobało." },
+        {
+          "en": "I really enjoyed the party.",
+          "pl": "Bardzo mi się podobało."
+        },
         { "en": "Thanks for everything!", "pl": "Dziękuję za wszystko!" },
         { "en": "That's all right.", "pl": "Nie ma za co." },
-        { "en": "Thanks for coming.", "pl": "Dziękuję, że przyszedłeś/przyszłaś." },
+        {
+          "en": "Thanks for coming.",
+          "pl": "Dziękuję, że przyszedłeś/przyszłaś."
+        },
         { "en": "Have you got everything?", "pl": "Masz wszystko?" }
       ]
     },
