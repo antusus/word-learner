@@ -1,0 +1,112 @@
+{
+  "title": "Vocabulary",
+  "bundle": "Unit4",
+  "groups": [
+    {
+      "name": "Skills and interests",
+      "words": [
+        { "en": "animation", "pl": "tworzenie filmów animowanych" },
+        { "en": "ballet dancing", "pl": "taniec baletowy" },
+        { "en": "collecting action figures", "pl": "kolekcjonowanie figurek" },
+        { "en": "hip hop dancing", "pl": "taniec hip-hopowy" },
+        { "en": "making jewellery", "pl": "tworzenie biżuterii" },
+        { "en": "making comics", "pl": "rysowanie komiksów" },
+        { "en": "playing the drums", "pl": "gra na perkusji" },
+        { "en": "playing keyboards", "pl": "gra na keyboardzie" },
+        { "en": "pottery", "pl": "ceramika" },
+        { "en": "singing in a band", "pl": "śpiewanie w zespole" }
+      ]
+    },
+    {
+      "name": "Sports",
+      "words": [
+        { "en": "horse-riding", "pl": "jazda konna" },
+        { "en": "ice-skating", "pl": "jazda na łyżwach" },
+        { "en": "karate", "pl": "karate" },
+        { "en": "snowboarding", "pl": "jazda na snowboardzie" },
+        { "en": "table tennis", "pl": "tenis stołowy" }
+      ]
+    },
+    {
+      "name": "Types of films",
+      "words": [
+        { "en": "action film", "pl": "film akcji" },
+        { "en": "animated film", "pl": "film animowany" },
+        { "en": "comedy", "pl": "komedia" },
+        { "en": "fantasy film", "pl": "film fantasy" },
+        { "en": "horror film", "pl": "horror" },
+        { "en": "musical", "pl": "musical" },
+        { "en": "romantic film", "pl": "romans" },
+        { "en": "science-fiction film", "pl": "film science fiction" }
+      ]
+    },
+    {
+      "name": "Film words",
+      "words": [
+        { "en": "director", "pl": "reżyser/reżyserka" },
+        { "en": "main character", "pl": "główny bohater / główna bohaterka" },
+        { "en": "plot", "pl": "akcja, wątek" },
+        { "en": "special effects", "pl": "efekty specjalne" }
+      ]
+    },
+    {
+      "name": "Real English",
+      "words": [
+        { "en": "It was pouring with rain.", "pl": "Lał deszcz." },
+        { "en": "I got soaked!", "pl": "Cały zmokłem! / Cała zmokłam!" },
+        {
+          "en": "I was terrified!",
+          "pl": "Byłem przerażony! / Byłam przerażona!"
+        },
+        { "en": "Believe it or not.", "pl": "Możesz mi wierzyć lub nie." }
+      ]
+    },
+    {
+      "name": "Talking about skills and interests",
+      "words": [
+        {
+          "en": "I'm not really into (board games).",
+          "pl": "Nie przepadam za grami planszowymi."
+        },
+        {
+          "en": "You love (reading comics).",
+          "pl": "Uwielbiasz czytać komiksy."
+        },
+        {
+          "en": "I'm not very good at (drawing).",
+          "pl": "Nie jestem zbyt dobry/dobra w (rysowaniu)."
+        },
+        { "en": "I like (animated films).", "pl": "Lubię (filmy animowane)." },
+        {
+          "en": "I'm interested in (learning how to do it).",
+          "pl": "Chętnie się dowiem, (jak to się robi)."
+        },
+        {
+          "en": "I'm not keen on (individual sports).",
+          "pl": "Nie przepadam za (sportami indywidualnymi)."
+        },
+        {
+          "en": "I enjoy (listening to music).",
+          "pl": "Lubię (słuchać muzyki)."
+        },
+        { "en": "I'm terrible at (singing)!", "pl": "(Śpiewam) okropnie!" },
+        {
+          "en": "I'm a fan of (hip hop music).",
+          "pl": "Jestem fanem/fanką (muzyki hip-hopowej)."
+        },
+        { "en": "I like (dancing).", "pl": "Lubię (tańczyć)." }
+      ]
+    },
+    {
+      "name": "Reading and culture",
+      "words": [
+        { "en": "ancient", "pl": "starodawny" },
+        { "en": "breathe", "pl": "oddychać" },
+        { "en": "butterfly", "pl": "motyl" },
+        { "en": "protect", "pl": "chronić" },
+        { "en": "sculpture", "pl": "rzeźba" },
+        { "en": "smoke", "pl": "dym" }
+      ]
+    }
+  ]
+}
