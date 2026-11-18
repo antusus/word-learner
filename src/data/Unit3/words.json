@@ -1,0 +1,107 @@
+{
+  "title": "Vocabulary",
+  "bundle": "Unit 3",
+  "groups": [
+    {
+      "name": "Life events",
+      "words": [
+        { "en": "be born", "pl": "urodzić się" },
+        { "en": "finish university", "pl": "skończyć uniwersytet/studia" },
+        { "en": "get a job", "pl": "dostać pracę" },
+        { "en": "get married", "pl": "wziąć ślub" },
+        { "en": "go to nursery", "pl": "iść do przedszkola" },
+        { "en": "go to university", "pl": "iść na uniwersytet/studia" },
+        { "en": "have children", "pl": "mieć dzieci" },
+        { "en": "leave school", "pl": "skończyć szkołę" },
+        { "en": "retire", "pl": "przejść na emeryturę" },
+        { "en": "start school", "pl": "zacząć szkołę" }
+      ]
+    },
+    {
+      "name": "Life stages",
+      "words": [
+        { "en": "adult", "pl": "dorosły" },
+        { "en": "baby", "pl": "niemowlę, dziecko" },
+        { "en": "child (children)", "pl": "dziecko (dzieci)" },
+        { "en": "pre-teen", "pl": "dziecko w wieku 9–12 lat" },
+        { "en": "teenager", "pl": "nastolatek/nastolatka" }
+      ]
+    },
+    {
+      "name": "Special days",
+      "words": [
+        { "en": "birthday", "pl": "urodziny" },
+        { "en": "Father's Day", "pl": "Dzień Ojca" },
+        { "en": "Mother's Day", "pl": "Dzień Matki" },
+        { "en": "New Year's Eve", "pl": "sylwester" },
+        { "en": "wedding", "pl": "ślub" }
+      ]
+    },
+    {
+      "name": "Celebrations",
+      "words": [
+        { "en": "blow out candles", "pl": "zdmuchnąć świeczki" },
+        { "en": "dress up", "pl": "przebierać się, stroić" },
+        { "en": "give cards/presents", "pl": "wręczać kartki/prezenty" },
+        { "en": "have a barbecue", "pl": "urządzać przyjęcie z grillem" },
+        { "en": "have a cake", "pl": "jeść ciasto/tort" },
+        { "en": "have a family meal", "pl": "jeść rodzinny posiłek" },
+        {
+          "en": "have a (fancy dress) party",
+          "pl": "urządzać imprezę (bal przebierańców)"
+        },
+        { "en": "invite guests", "pl": "zapraszać gości" }
+      ]
+    },
+    {
+      "name": "Real English",
+      "words": [
+        { "en": "Great party!", "pl": "Wspaniałe przyjęcie!" },
+        { "en": "That's easy!", "pl": "To łatwe!" },
+        { "en": "I have no idea!", "pl": "Nie mam pojęcia!" },
+        { "en": "Give me a clue.", "pl": "Podpowiedz mi. / Naprowadź mnie." },
+        { "en": "That's strange!", "pl": "To dziwne!" }
+      ]
+    },
+    {
+      "name": "Leaving a party",
+      "words": [
+        {
+          "en": "Thanks for a great party!",
+          "pl": "Dziękuję za wspaniałe przyjęcie / świetną imprezę!"
+        },
+        { "en": "You're welcome.", "pl": "Proszę." },
+        {
+          "en": "Glad you enjoyed it.",
+          "pl": "Cieszę się, że Ci się podobało."
+        },
+        {
+          "en": "I had a really good time.",
+          "pl": "Świetnie się bawiłem/bawiłam."
+        },
+        { "en": "Thanks for the present.", "pl": "Dziękuję za prezent." },
+        {
+          "en": "I really enjoyed the party.",
+          "pl": "Bardzo mi się podobało."
+        },
+        { "en": "Thanks for everything!", "pl": "Dziękuję za wszystko!" },
+        { "en": "That's all right.", "pl": "Nie ma za co." },
+        {
+          "en": "Thanks for coming.",
+          "pl": "Dziękuję, że przyszedłeś/przyszłaś."
+        },
+        { "en": "Have you got everything?", "pl": "Masz wszystko?" }
+      ]
+    },
+    {
+      "name": "Reading and culture",
+      "words": [
+        { "en": "button", "pl": "guzik" },
+        { "en": "diploma", "pl": "dyplom" },
+        { "en": "march", "pl": "maszerować" },
+        { "en": "middle school", "pl": "gimnazjum" },
+        { "en": "truck", "pl": "ciężarówka" }
+      ]
+    }
+  ]
+}
