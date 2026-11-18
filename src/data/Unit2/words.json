@@ -1,0 +1,104 @@
+{
+  "title": "Vocabulary",
+  "bundle": "Unit2",
+  "groups": [
+    {
+      "name": "Technology nouns",
+      "words": [
+        { "en": "AI (Artificial Intelligence)", "pl": "sztuczna inteligencja" },
+        { "en": "chatbot", "pl": "chatbot" },
+        { "en": "memory stick", "pl": "przenośna pamięć" },
+        { "en": "mouse", "pl": "mysz (do komputera)" },
+        { "en": "portable speaker", "pl": "przenośny głośnik" },
+        { "en": "screen", "pl": "ekran" },
+        { "en": "3D printer", "pl": "drukarka 3D" },
+        { "en": "touchpad", "pl": "panel dotykowy" },
+        { "en": "virtual keyboard", "pl": "klawiatura wirtualna" },
+        { "en": "wireless headphones", "pl": "słuchawki bezprzewodowe" }
+      ]
+    },
+    {
+      "name": "Technology verbs 1",
+      "words": [
+        { "en": "connect", "pl": "podłączać" },
+        { "en": "print", "pl": "drukować" },
+        { "en": "save", "pl": "zapisywać" },
+        { "en": "send", "pl": "wysyłać" },
+        { "en": "type", "pl": "pisać na klawiaturze" }
+      ]
+    },
+    {
+      "name": "Technology verbs 2",
+      "words": [
+        { "en": "click", "pl": "klikać" },
+        { "en": "download", "pl": "pobierać" },
+        { "en": "enter (a password)", "pl": "wprowadzać (hasło)" },
+        { "en": "log in", "pl": "logować się" },
+        { "en": "log out", "pl": "wylogować się" },
+        { "en": "post", "pl": "zamieszczać" },
+        { "en": "search (for)", "pl": "szukać (czegoś)" },
+        { "en": "share", "pl": "udostępniać" },
+        { "en": "tap", "pl": "dotknąć" },
+        { "en": "upload", "pl": "ładować" }
+      ]
+    },
+    {
+      "name": "Real English",
+      "words": [
+        { "en": "I'm tired of waiting.", "pl": "Mam już dość tego czekania." },
+        { "en": "Just imagine!", "pl": "Tylko sobie wyobraź!" },
+        {
+          "en": "Pity we can't have one now!",
+          "pl": "Szkoda, że teraz tego nie mamy."
+        },
+        {
+          "en": "I'm so hungry I could eat a horse!",
+          "pl": "Jestem tak głodny/głodna, że zjadłbym/zjadłabym konia z kopytami!"
+        },
+        {
+          "en": "Pity we can't do it now!",
+          "pl": "Szkoda, że teraz nie możemy tego zrobić!"
+        },
+        { "en": "Maybe you're right.", "pl": "Może masz rację!" }
+      ]
+    },
+    {
+      "name": "Expressing hopes for the future",
+      "words": [
+        {
+          "en": "I'd like to (play the guitar in a band one day).",
+          "pl": "Chciałbym/Chciałabym kiedyś (grać na gitarze w zespole)."
+        },
+        {
+          "en": "Do you think you'll (play in concerts)?",
+          "pl": "Myślisz, że będziesz (grać na koncertach)?"
+        },
+        { "en": "I hope so!", "pl": "Mam nadzieję, że tak!" },
+        { "en": "I hope not.", "pl": "Mam nadzieję, że nie." },
+        {
+          "en": "I don't think I'll (be rich).",
+          "pl": "Nie sądzę, że (będę bogaty/bogata)."
+        },
+        {
+          "en": "I think I'll (study it at university).",
+          "pl": "Myślę, że to właśnie (będę studiować na uniwersytecie)."
+        },
+        {
+          "en": "I hope to be (an inventor).",
+          "pl": "Mam nadzieję, że zostanę (wynalazcą/wynalazczynią)."
+        }
+      ]
+    },
+    {
+      "name": "Reading and culture",
+      "words": [
+        { "en": "blind", "pl": "niewidomy" },
+        { "en": "cycle lane", "pl": "ścieżka rowerowa" },
+        { "en": "fewer", "pl": "mniej" },
+        { "en": "repair", "pl": "naprawa" },
+        { "en": "solar panel", "pl": "panel słoneczny" },
+        { "en": "traffic lights", "pl": "światła drogowe" }
+      ]
+    }
+  ]
+}
